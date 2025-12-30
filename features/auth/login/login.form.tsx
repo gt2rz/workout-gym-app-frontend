@@ -95,7 +95,7 @@ export default function LoginForm() {
 
 const styles = StyleSheet.create({
   formContainer: {
-    backgroundColor: "rgba(0,0,0, 0.3)", // 90% opaco, 10% transparente
+    backgroundColor: "rgba(0,0,0, 0.3)",
     padding: 30,
     borderRadius: 15,
     shadowColor: "#000",
@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
-    // marginBottom: 30,
     color: "#e4e4e4ff",
   },
   subtitle: {
