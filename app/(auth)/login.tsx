@@ -3,6 +3,7 @@ import React from "react";
 import {
   ImageBackground,
   KeyboardAvoidingView,
+  Linking,
   Platform,
   ScrollView,
   StyleSheet,
@@ -15,6 +16,10 @@ import LoginForm from "@/features/auth/login/login.form";
 export default function LoginScreen() {
   const navigateToRegister = () => {
     router.push("/(auth)/register");
+  };
+
+  const openWebsite = () => {
+    Linking.openURL("https://gt2rz.dev");
   };
 
   return (
@@ -33,7 +38,16 @@ export default function LoginScreen() {
         >
           <View style={styles.logoContainer}>
             <Text style={styles.appName}>
-              Workout<Text style={{ color: "#bfc513ff" }}>!</Text>
+              Work
+              <Text
+                style={{
+                  color: "rgba(197, 176, 19, 1)",
+                  fontWeight: "bold",
+                  fontSize: 40,
+                }}
+              >
+                out!
+              </Text>
             </Text>
             <Text style={styles.subtitle}>Gym app</Text>
           </View>
@@ -45,6 +59,16 @@ export default function LoginScreen() {
             <TouchableOpacity onPress={navigateToRegister}>
               <Text style={styles.registerLink}>Registrarse</Text>
             </TouchableOpacity>
+          </View>
+
+          <View style={styles.copyrightContainer}>
+            <Text style={styles.copyrightText}>
+              © 2026{" "}
+              <Text onPress={openWebsite} style={styles.linkText}>
+                gt2rz
+              </Text>
+              . Todos los derechos reservados.
+            </Text>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -85,23 +109,37 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#bcca64ff",
+    color: "#c4c7acff",
     textTransform: "uppercase",
   },
   registerContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "transparent",
   },
   registerText: {
     fontSize: 16,
-    color: "#7f8c8d",
+    color: "#cacbaaff",
     marginRight: 5,
   },
   registerLink: {
     fontSize: 16,
-    color: "#3498db",
+    color: "#ced817ff",
     fontWeight: "bold",
     backgroundColor: "transparent",
+  },
+  copyrightContainer: {
+    marginTop: 40,
+    alignItems: "center",
+    backgroundColor: "transparent",
+    alignContent: "center",
+  },
+  copyrightText: {
+    fontSize: 14,
+    color: "#888",
+  },
+  linkText: {
+    color: "#ced817ff",
   },
 });
