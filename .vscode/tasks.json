@@ -1,0 +1,87 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Iniciar Expo en Desarrollo",
+      "type": "shell",
+      "command": "echo 'Iniciando servidor Expo...'", // Comando por defecto
+      "osx": {
+        // Comando específico para macOS: Limpia procesos de expo y luego inicia Expo
+        "command": "pkill -f 'expo' || true && npm start"
+      },
+      "windows": {
+        "command": "taskkill /f /im expo.exe 2>nul || echo 'No hay procesos expo activos' && npm start"
+      },
+      "linux": {
+        "command": "pkill -f 'expo' || true && npm start"
+      },
+      "isBackground": true,
+      "presentation": {
+        "group": "dev-server", // Agrupa esta tarea con la de levantar servicios
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "runOn": "folderOpen" // Ejecuta automáticamente al abrir
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Expo Start Android",
+      "type": "shell",
+      "command": "npm run android",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "group": "expo-platforms",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Expo Start iOS",
+      "type": "shell",
+      "command": "npm run ios",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "group": "expo-platforms",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    // {
+    //   "label": "Expo Start Web",
+    //   "type": "shell",
+    //   "command": "npm run web",
+    //   "group": {
+    //     "kind": "build",
+    //     "isDefault": false
+    //   },
+    //   "presentation": {
+    //     "group": "expo-platforms",
+    //     "panel": "dedicated"
+    //   },
+    //   "problemMatcher": []
+    // },
+    {
+      "label": "Verificar y Levantar Postgres",
+      "type": "shell",
+      "command": "docker ps --filter 'name=postgres' --filter 'status=running' | grep -q postgres || (echo 'Contenedor Postgres no activo, levantando...' && docker start postgres || docker run --name postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres)",
+      "windows": {
+        "command": "if (-not (docker ps --filter 'name=postgres' --filter 'status=running')) { Write-Host 'Contenedor Postgres no activo, levantando...' ; docker start postgres || docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres }"
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "group": "dev-server"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
