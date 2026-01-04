@@ -1,3 +1,4 @@
+import { useAuth } from "@/context/auth";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -10,6 +11,7 @@ import {
 } from "react-native";
 
 export default function LoginForm() {
+  const { signIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +28,7 @@ export default function LoginForm() {
       // Aquí iría la lógica de autenticación
       // Por ahora simulamos un login exitoso
       await new Promise((resolve) => setTimeout(resolve, 1000));
+      await signIn();
 
       // Navegar a las tabs después del login exitoso
       router.replace("/(tabs)");

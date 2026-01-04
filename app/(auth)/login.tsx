@@ -14,6 +14,9 @@ import { Text, View } from "@/components/Themed";
 import LoginForm from "@/features/auth/login/login.form";
 
 export default function LoginScreen() {
+
+
+
   const navigateToRegister = () => {
     router.push("/(auth)/register");
   };
