@@ -103,14 +103,6 @@ const styles = StyleSheet.create({
     height: "100%",
     opacity: 0.6,
   },
-  heroCardOverlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
   heroCardContent: {
     position: "absolute",
     top: 0,
@@ -119,7 +111,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     padding: 20,
     zIndex: 10,
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     justifyContent: "space-between",
   },
   routineTypeTag: {
