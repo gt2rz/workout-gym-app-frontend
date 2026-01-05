@@ -4,7 +4,6 @@ import React from "react";
 
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -20,7 +19,20 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveTintColor: "#13ec80",
+        tabBarInactiveTintColor: "#92c9ad",
+        tabBarStyle: {
+          backgroundColor: "#08150fff",
+          borderTopWidth: 0,
+          paddingTop: 8,
+          paddingBottom: 24,
+          height: 84,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: "500",
+          marginTop: 4,
+        },
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
@@ -29,7 +41,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "inicio",
+          title: "Inicio",
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
@@ -55,14 +67,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="routines"
         options={{
-          title: "Routines",
+          title: "Rutinas",
           tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
+          title: "Perfil",
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
