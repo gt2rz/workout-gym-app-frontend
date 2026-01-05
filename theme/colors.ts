@@ -27,7 +27,7 @@ export const Colors = {
   background: {
     primary: '#f8f9fa',
     secondary: '#ffffff',
-    dark: '#0f172b',
+    dark: '#11221a',
     overlay: 'rgba(15, 23, 43, 0.7)',
     transparent: 'transparent',
   },
