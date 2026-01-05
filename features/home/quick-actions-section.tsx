@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
   quickActionsContent: {
     paddingHorizontal: 8,
     gap: 12,
+    marginTop: 16,
   },
   quickActionButton: {
     flexDirection: "row",
