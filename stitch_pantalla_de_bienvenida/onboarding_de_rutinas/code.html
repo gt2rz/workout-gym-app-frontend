@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding Rutina</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#13ec80",
+              "background-light": "#f6f8f7",
+              "background-dark": "#102219",
+              "surface-dark": "#1a2e24", // Custom surface color for cards
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-black pb-24">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 bg-background-light dark:bg-background-dark/95 backdrop-blur-md border-b border-white/5 p-4 flex items-center justify-between">
+<button class="text-white hover:text-primary transition-colors flex size-10 shrink-0 items-center justify-center rounded-full active:bg-white/10">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Configuración de Rutina</h2>
+</div>
+<!-- Progress Indicator -->
+<div class="flex w-full flex-col items-center justify-center gap-2 py-4 px-6">
+<div class="flex w-full justify-between text-xs text-gray-400 font-body mb-2">
+<span>Paso 2 de 4</span>
+<span class="text-primary font-bold">50% Completado</span>
+</div>
+<div class="flex w-full flex-row items-center gap-2">
+<div class="h-1.5 flex-1 rounded-full bg-primary shadow-[0_0_10px_rgba(19,236,128,0.4)]"></div>
+<div class="h-1.5 flex-1 rounded-full bg-primary shadow-[0_0_10px_rgba(19,236,128,0.4)]"></div>
+<div class="h-1.5 flex-1 rounded-full bg-white/20"></div>
+<div class="h-1.5 flex-1 rounded-full bg-white/20"></div>
+</div>
+</div>
+<!-- Section 1: Goals -->
+<div class="animate-fade-in-up">
+<h1 class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold leading-tight px-4 text-left pb-2 pt-2">
+            Define tu Objetivo Principal
+        </h1>
+<p class="px-4 text-gray-400 text-sm mb-4 font-body">Selecciona el enfoque de tu macrociclo actual.</p>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 px-4">
+<!-- Active Card -->
+<label class="group relative cursor-pointer">
+<input checked="" class="peer sr-only" name="goal" type="radio"/>
+<div class="relative flex flex-col gap-3 pb-3 p-3 rounded-xl bg-surface-dark border-2 border-primary transition-all shadow-[0_0_15px_rgba(19,236,128,0.15)]">
+<div class="absolute top-3 right-3 z-10 size-6 bg-primary rounded-full flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden relative" data-alt="Muscular anatomy illustration focusing on muscle growth" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDoi9KWPeMDKaUqHBYMZpu_dybRj9TRepTB8Ar9A_YMJS7FS634ftZ1_7FAhvRskufEh8D5aeN1E7SI3M6w6g2APaQds21dO6DnHN9r1yKM1PINQAMgUoHlJfQCJEO5KQzcYbfSY211er_3cdSvwMWEfX0p2TGbt_LMXgQFZiD81kiLnqALShd3tWd_dCjKMKgcQobojlOc8SEA2SY-t12P8HtspibXp5FhGbDWlPi_utUZ0I4Y9Do0nJM-i3M0bFfzTwjJZbE8auQ");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<div>
+<p class="text-white text-base font-medium leading-normal">Hipertrofia</p>
+<p class="text-primary text-xs font-normal leading-normal font-body">Ganar masa muscular</p>
+</div>
+</div>
+</label>
+<!-- Inactive Card -->
+<label class="group relative cursor-pointer">
+<input class="peer sr-only" name="goal" type="radio"/>
+<div class="flex flex-col gap-3 pb-3 p-3 rounded-xl bg-surface-dark border-2 border-transparent hover:border-white/20 peer-checked:border-primary transition-all opacity-80 peer-checked:opacity-100 hover:opacity-100">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden relative" data-alt="Weightlifter performing a heavy deadlift" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD0vxhFiWbCQQQUf0a4-HjGUMKGw_q5d_SpuguOkdtNo6GMdZGuvZMUmV9udcjdmU3SCj-1CC5BO52M-nsKpSMk1M0b2XtxP0kj6GBrbGB7IsiM8CBTXNd6CtOe1W7aslf_IgDHt-MSLGETkzIXnQz_lrNg9nAZ2Skjv9F1eYn0EGo918eK47j3NNxkdYesO2-iOGhDSB_h3ETutSwBsAfOXlwTZRUJVO6NsL2yFP_xJBtIs-Dy8HqaYGiScS3jiy9_4Ecyjzasgd4");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<div>
+<p class="text-white text-base font-medium leading-normal">Fuerza</p>
+<p class="text-gray-400 text-xs font-normal leading-normal font-body">Potencia máxima</p>
+</div>
+</div>
+</label>
+<!-- Inactive Card -->
+<label class="group relative cursor-pointer">
+<input class="peer sr-only" name="goal" type="radio"/>
+<div class="flex flex-col gap-3 pb-3 p-3 rounded-xl bg-surface-dark border-2 border-transparent hover:border-white/20 peer-checked:border-primary transition-all opacity-80 peer-checked:opacity-100 hover:opacity-100">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden relative" data-alt="Runner on a track illustrating endurance" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAX_v2B63OMPcaENHed0yTEW205OuHF7QJpUMUGVLdPa4moIzVR0RPi87BQiQjE0F0_bUcgAPP-EAvhWbf3W8P-JNx4F16ZCgg2p7kJ9IKSuExbaS7U0g0-IYl3dBnUHdG2YmKY9DJO19M8eNMdHXcXHcALTHy6OPQ0ljSRE0C5goRBYHZxa4y2OUyVQ3f-GY11ovUKc7cCEQXCrEaA1QPrl9sVeL1iyt9Pr6ihevhYirJNgPncFbWu3bm90xVjv37qaePV8qiGU-g");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<div>
+<p class="text-white text-base font-medium leading-normal">Resistencia</p>
+<p class="text-gray-400 text-xs font-normal leading-normal font-body">Mejorar cardio</p>
+</div>
+</div>
+</label>
+</div>
+</div>
+<div class="h-8"></div>
+<!-- Section 2: Frequency -->
+<div>
+<h2 class="text-slate-900 dark:text-white tracking-tight text-xl font-bold leading-tight px-4 text-left pb-3">
+            Frecuencia Semanal
+        </h2>
+<p class="px-4 text-gray-400 text-sm mb-4 font-body">¿Cuántos días a la semana puedes entrenar?</p>
+<div class="px-4">
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<!-- Option 3 -->
+<label class="cursor-pointer flex-1 min-w-[80px]">
+<input class="peer sr-only" name="freq" type="radio"/>
+<div class="flex flex-col items-center justify-center h-24 rounded-xl bg-surface-dark border border-white/5 peer-checked:bg-primary peer-checked:text-background-dark peer-checked:border-primary transition-all hover:bg-white/5">
+<span class="text-2xl font-bold">3</span>
+<span class="text-xs font-body opacity-80">Días</span>
+</div>
+</label>
+<!-- Option 4 (Selected) -->
+<label class="cursor-pointer flex-1 min-w-[80px]">
+<input checked="" class="peer sr-only" name="freq" type="radio"/>
+<div class="flex flex-col items-center justify-center h-24 rounded-xl bg-primary text-background-dark border border-primary shadow-[0_0_20px_rgba(19,236,128,0.3)] transition-all scale-105">
+<span class="text-2xl font-bold">4</span>
+<span class="text-xs font-body font-bold">Días</span>
+</div>
+</label>
+<!-- Option 5 -->
+<label class="cursor-pointer flex-1 min-w-[80px]">
+<input class="peer sr-only" name="freq" type="radio"/>
+<div class="flex flex-col items-center justify-center h-24 rounded-xl bg-surface-dark border border-white/5 peer-checked:bg-primary peer-checked:text-background-dark peer-checked:border-primary transition-all hover:bg-white/5">
+<span class="text-2xl font-bold">5</span>
+<span class="text-xs font-body opacity-80">Días</span>
+</div>
+</label>
+<!-- Option 6 -->
+<label class="cursor-pointer flex-1 min-w-[80px]">
+<input class="peer sr-only" name="freq" type="radio"/>
+<div class="flex flex-col items-center justify-center h-24 rounded-xl bg-surface-dark border border-white/5 peer-checked:bg-primary peer-checked:text-background-dark peer-checked:border-primary transition-all hover:bg-white/5">
+<span class="text-2xl font-bold">6</span>
+<span class="text-xs font-body opacity-80">Días</span>
+</div>
+</label>
+</div>
+<p class="text-xs text-primary mt-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">info</span>
+                Recomendado para Hipertrofia Moderada
+            </p>
+</div>
+</div>
+<div class="h-8"></div>
+<!-- Section 3: Educational Context -->
+<div class="bg-surface-dark/50 mx-4 rounded-2xl p-5 border border-white/5 relative overflow-hidden">
+<div class="absolute -right-10 -top-10 size-40 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">school</span>
+<h3 class="text-white font-bold text-lg">Entiende tu Plan</h3>
+</div>
+<div class="space-y-4">
+<!-- Concept 1 -->
+<div class="flex gap-4 items-start">
+<div class="mt-1 flex-shrink-0 size-8 rounded-full bg-background-dark flex items-center justify-center border border-white/10 text-gray-300">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+</div>
+<div>
+<h4 class="text-white font-medium text-sm">Macrociclo</h4>
+<p class="text-gray-400 text-xs font-body leading-relaxed">Es tu plan a largo plazo (6-12 meses). Se divide en fases para evitar estancamientos.</p>
+</div>
+</div>
+<!-- Concept 2 -->
+<div class="flex gap-4 items-start">
+<div class="mt-1 flex-shrink-0 size-8 rounded-full bg-background-dark flex items-center justify-center border border-white/10 text-gray-300">
+<span class="material-symbols-outlined text-sm">date_range</span>
+</div>
+<div>
+<h4 class="text-white font-medium text-sm">Mesociclo</h4>
+<p class="text-gray-400 text-xs font-body leading-relaxed">Bloques de entrenamiento de 4-6 semanas con un enfoque específico (fuerza, volumen).</p>
+</div>
+</div>
+<!-- Concept 3 -->
+<div class="flex gap-4 items-start">
+<div class="mt-1 flex-shrink-0 size-8 rounded-full bg-background-dark flex items-center justify-center border border-white/10 text-gray-300">
+<span class="material-symbols-outlined text-sm">today</span>
+</div>
+<div>
+<h4 class="text-white font-medium text-sm">Microciclo</h4>
+<p class="text-gray-400 text-xs font-body leading-relaxed">Tu semana de entrenamiento. Aquí defines la intensidad día a día.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="h-8"></div>
+<!-- Section 4: Split Selector -->
+<div>
+<h2 class="text-slate-900 dark:text-white tracking-tight text-xl font-bold leading-tight px-4 text-left pb-3 flex justify-between items-center">
+<span>Distribución (Split)</span>
+<span class="text-xs font-normal text-primary bg-primary/10 px-2 py-1 rounded-full">4 días</span>
+</h2>
+<div class="px-4 space-y-3">
+<!-- Split Option 1: Torso / Pierna -->
+<label class="block relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="split" type="radio"/>
+<div class="bg-surface-dark border border-white/10 p-4 rounded-xl peer-checked:border-primary peer-checked:bg-surface-dark peer-checked:ring-1 peer-checked:ring-primary/50 transition-all">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="text-white font-bold block mb-1 group-hover:text-primary transition-colors">Torso / Pierna</span>
+<span class="text-xs text-gray-400 font-body">Alta frecuencia. Entrenas cada músculo 2 veces/semana.</span>
+</div>
+<div class="size-5 rounded-full border-2 border-gray-600 peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center">
+<div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+<!-- Visualization Mini Calendar -->
+<div class="flex gap-1 mt-3">
+<div class="h-1.5 flex-1 rounded bg-blue-400" title="Torso"></div>
+<div class="h-1.5 flex-1 rounded bg-green-400" title="Pierna"></div>
+<div class="h-1.5 flex-1 rounded bg-gray-600" title="Descanso"></div>
+<div class="h-1.5 flex-1 rounded bg-blue-400" title="Torso"></div>
+<div class="h-1.5 flex-1 rounded bg-green-400" title="Pierna"></div>
+<div class="h-1.5 flex-1 rounded bg-gray-600" title="Descanso"></div>
+<div class="h-1.5 flex-1 rounded bg-gray-600" title="Descanso"></div>
+</div>
+<div class="flex justify-between text-[10px] text-gray-500 mt-1 font-body">
+<span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+</div>
+</div>
+</label>
+<!-- Split Option 2: Upper / Lower (Alternative) -->
+<label class="block relative cursor-pointer group">
+<input class="peer sr-only" name="split" type="radio"/>
+<div class="bg-surface-dark border border-white/10 p-4 rounded-xl peer-checked:border-primary peer-checked:bg-surface-dark peer-checked:ring-1 peer-checked:ring-primary/50 transition-all opacity-80 hover:opacity-100">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="text-white font-bold block mb-1 group-hover:text-primary transition-colors">Push / Pull + Full Body</span>
+<span class="text-xs text-gray-400 font-body">Híbrido. Enfoque en movimientos y un día completo.</span>
+</div>
+<div class="size-5 rounded-full border-2 border-gray-600 peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center">
+<div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+<!-- Visualization Mini Calendar -->
+<div class="flex gap-1 mt-3">
+<div class="h-1.5 flex-1 rounded bg-orange-400" title="Push"></div>
+<div class="h-1.5 flex-1 rounded bg-purple-400" title="Pull"></div>
+<div class="h-1.5 flex-1 rounded bg-gray-600" title="Descanso"></div>
+<div class="h-1.5 flex-1 rounded bg-orange-400" title="Push"></div>
+<div class="h-1.5 flex-1 rounded bg-purple-400" title="Pull"></div>
+<div class="h-1.5 flex-1 rounded bg-teal-400" title="Full Body"></div>
+<div class="h-1.5 flex-1 rounded bg-gray-600" title="Descanso"></div>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Spacer for Sticky Footer -->
+<div class="h-10"></div>
+<!-- Sticky Footer -->
+<div class="fixed bottom-0 left-0 w-full p-4 bg-gradient-to-t from-background-dark via-background-dark to-transparent z-40">
+<button class="w-full bg-primary hover:bg-[#0fd671] active:scale-[0.98] transition-all text-background-dark font-bold text-lg py-4 rounded-xl shadow-[0_4px_20px_rgba(19,236,128,0.25)] flex items-center justify-center gap-2">
+            Continuar
+            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</body></html>

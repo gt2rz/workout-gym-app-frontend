@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inicio de Sesión - Gym Tracker</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "card-dark": "#193326",
+                        "border-dark": "#32674d",
+                        "text-dim": "#92c9ad",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-background-dark">
+<div class="relative flex min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- Background Pattern/Decoration -->
+<div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none z-0"></div>
+<!-- Content Wrapper -->
+<div class="relative z-10 flex flex-col flex-1 px-6 pt-12 pb-6">
+<!-- Header Section -->
+<div class="flex flex-col items-center justify-center mb-10 mt-8">
+<!-- App Logo Placeholder -->
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-emerald-600 flex items-center justify-center mb-6 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-background-dark text-3xl font-bold">fitness_center</span>
+</div>
+<h1 class="text-3xl font-bold tracking-tight text-center mb-2 text-slate-900 dark:text-white">
+                    Bienvenido de nuevo
+                </h1>
+<p class="text-slate-500 dark:text-text-dim text-center text-sm font-light">
+                    Continúa tu progreso donde lo dejaste.
+                </p>
+</div>
+<!-- Form Section -->
+<form class="flex flex-col gap-5 w-full" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="group">
+<label class="block text-sm font-medium leading-6 mb-2 text-slate-700 dark:text-white" for="email">
+                        Correo Electrónico
+                    </label>
+<div class="relative">
+<input class="block w-full rounded-lg border-0 py-3.5 pl-4 pr-10 text-slate-900 dark:text-white shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-border-dark bg-white dark:bg-card-dark placeholder:text-slate-400 dark:placeholder:text-text-dim/50 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-base sm:leading-6 transition-all" id="email" name="email" placeholder="ejemplo@correo.com" type="email"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+<span class="material-symbols-outlined text-slate-400 dark:text-text-dim" style="font-size: 20px;">mail</span>
+</div>
+</div>
+</div>
+<!-- Password Field -->
+<div class="group">
+<div class="flex items-center justify-between mb-2">
+<label class="block text-sm font-medium leading-6 text-slate-700 dark:text-white" for="password">
+                            Contraseña
+                        </label>
+<a class="text-sm font-medium text-emerald-600 dark:text-primary hover:underline hover:text-emerald-500 transition-colors" href="#">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+</div>
+<div class="relative">
+<input class="block w-full rounded-lg border-0 py-3.5 pl-4 pr-10 text-slate-900 dark:text-white shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-border-dark bg-white dark:bg-card-dark placeholder:text-slate-400 dark:placeholder:text-text-dim/50 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-base sm:leading-6 transition-all" id="password" name="password" placeholder="Ingresa tu contraseña" type="password"/>
+<button class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer text-slate-400 dark:text-text-dim hover:text-primary dark:hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Login Button -->
+<button class="mt-4 flex w-full items-center justify-center rounded-lg bg-primary px-3 py-3.5 text-base font-bold leading-6 text-background-dark shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all active:scale-[0.98]" type="submit">
+                    Iniciar Sesión
+                </button>
+</form>
+<!-- Social Login Divider -->
+<div class="relative mt-8 mb-6">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-300 dark:border-border-dark"></div>
+</div>
+<div class="relative flex justify-center text-sm font-medium leading-6">
+<span class="bg-background-light dark:bg-background-dark px-4 text-slate-500 dark:text-text-dim">O continúa con</span>
+</div>
+</div>
+<!-- Social Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex w-full items-center justify-center gap-3 rounded-lg bg-white dark:bg-card-dark px-3 py-2.5 text-sm font-semibold text-slate-900 dark:text-white shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-border-dark hover:bg-slate-50 dark:hover:bg-opacity-80 transition-all" type="button">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12.0003 20.45c-2.2223 0-4.1032-.7338-5.5908-2.196l2.3664-2.3664c.7313.5654 1.8398 1.0504 3.2244 1.0504 2.1916 0 4.1006-1.4883 4.7869-3.6653H12.0003v-3.327h9.0984c.1481.7617.2226 1.554.2226 2.3927 0 4.9082-3.2662 8.1118-9.321 8.1118z" fill="#4285F4"></path>
+<path d="M7.189 15.6545l-2.4504 2.4504c-1.7483-2.003-2.7383-4.577-2.7383-7.255 0-2.311.7588-4.5028 2.059-6.305l2.4047 2.4048C5.6433 8.356 5.2505 9.7713 5.2505 11.25s.3928 2.894 1.2057 4.0152l.7328.3893z" fill="#FBBC05"></path>
+<path d="M12.0003 4.75c1.4727 0 2.7937.5256 3.8293 1.4885l2.7166-2.7166C16.8483 1.9568 14.619 1 12.0003 1 7.2148 1 3.0336 3.7258 1 7.641l2.3787 2.3787c.8856-3.0037 3.6588-5.2697 6.6216-5.2697z" fill="#EA4335"></path>
+<path d="M21.0984 8.761h-.0058v.0058c-.1147.5338-.2853 1.0423-.5055 1.5222l-2.5835-2.5834c.3204-.3784.693-.7152 1.107-1.002l1.9878 2.0573z" fill="#34A853"></path>
+</svg>
+<span class="text-sm">Google</span>
+</button>
+<button class="flex w-full items-center justify-center gap-3 rounded-lg bg-white dark:bg-card-dark px-3 py-2.5 text-sm font-semibold text-slate-900 dark:text-white shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-border-dark hover:bg-slate-50 dark:hover:bg-opacity-80 transition-all" type="button">
+<svg aria-hidden="true" class="h-5 w-5 flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+<path d="M13.882 2.809c.895-.972 1.498-2.327 1.332-3.676-1.288.06-2.85.867-3.748 1.905-.805.918-1.509 2.396-1.32 3.662 1.439.113 2.897-.932 3.736-1.891zm.344 3.966c-1.956-.109-3.616 1.106-4.545 1.106-.928 0-2.378-1.077-3.916-1.047-2.016.03-3.877 1.196-4.918 3.04-2.122 3.746-.543 9.256 1.523 12.28 1.015 1.488 2.227 3.16 3.818 3.102 1.531-.059 2.107-.996 3.957-.996 1.84 0 2.361.996 3.967.966 1.637-.03 2.802-1.748 3.85-3.297 1.206-1.776 1.704-3.504 1.734-3.593-.039-.016-3.328-1.298-3.36-5.152-.031-3.219 2.607-4.757 2.73-4.816-1.494-2.213-3.815-2.458-4.634-2.493z"></path>
+</svg>
+<span class="text-sm">Apple</span>
+</button>
+</div>
+<!-- Footer Section -->
+<div class="mt-auto pt-10 text-center">
+<p class="text-sm text-slate-500 dark:text-text-dim">
+                    ¿No tienes cuenta? 
+                    <a class="font-semibold text-emerald-600 dark:text-primary hover:underline ml-1" href="#">Regístrate</a>
+</p>
+</div>
+<div class="h-4"></div>
+</div>
+</div>
+</body></html>

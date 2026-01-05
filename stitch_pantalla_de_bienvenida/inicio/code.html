@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inicio - Gym Tracker</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#11221a", /* Updated to match snippet dark tone */
+                        "surface-dark": "#193326",
+                        "text-secondary": "#92c9ad",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- Header / Top Bar -->
+<header class="sticky top-0 z-20 flex items-center justify-between bg-background-light/90 dark:bg-background-dark/90 px-4 py-3 backdrop-blur-md">
+<div class="flex items-center gap-3">
+<div class="relative h-10 w-10 overflow-hidden rounded-full border-2 border-primary/20">
+<img alt="Portrait of a young woman smiling" class="h-full w-full object-cover" data-alt="User profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrGjpDrUxo084O9lpHVmi0rP5fifEE4gCANQQ-kzoFW6Q809Yy9uXcLu3oAvKUkHY-KeuO0KXZKd56I6U2XgucShMQRrS4TzXX2GGcxvwvw1dNyYFYVqwdp9wg_EXf5N-F1p7DP4L5fr-HLNooQvVFYCtf98qBkrePHwUn20WPPJ014Klq-JeBLzorgeJQoX28PFYghupIwjnrDrPaMsRU4gcENRBMfrnjVfk9yRjr3eaHe-zja8F_9eRFqTZuKcbFNyG4n2l-rNE"/>
+</div>
+</div>
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-dark/50 hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-white" style="font-size: 24px;">notifications</span>
+</button>
+</header>
+<!-- Greeting Section -->
+<div class="px-4 pt-4">
+<p class="text-text-secondary text-sm font-medium uppercase tracking-wide">Lunes, 14 Oct</p>
+<h1 class="mt-1 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Hola, Alex 👋</h1>
+</div>
+<!-- Weekly Calendar -->
+<div class="mt-6 px-4">
+<div class="flex items-center justify-between pb-2">
+<h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Tu Semana</h2>
+<button class="text-sm font-medium text-primary hover:underline">Ver Todo</button>
+</div>
+<div class="flex justify-between gap-2 overflow-x-auto py-2 no-scrollbar">
+<!-- Day Item: Active -->
+<div class="flex flex-col items-center gap-2">
+<span class="text-xs font-medium text-text-secondary">Lun</span>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-background-dark font-bold shadow-[0_0_12px_rgba(19,236,128,0.4)]">
+                        14
+                    </div>
+</div>
+<!-- Day Item: Completed -->
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-xs font-medium text-text-secondary">Mar</span>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-dark text-white border border-transparent">
+                        15
+                    </div>
+</div>
+<!-- Day Item: Pending -->
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-xs font-medium text-text-secondary">Mié</span>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-dark text-white border border-transparent">
+                        16
+                    </div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-xs font-medium text-text-secondary">Jue</span>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-dark text-white border border-transparent">
+                        17
+                    </div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-xs font-medium text-text-secondary">Vie</span>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-dark text-white border border-transparent">
+                        18
+                    </div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-xs font-medium text-text-secondary">Sáb</span>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-dark text-white border border-transparent">
+                        19
+                    </div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-xs font-medium text-text-secondary">Dom</span>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-dark text-white border border-transparent">
+                        20
+                    </div>
+</div>
+</div>
+</div>
+<!-- Hero Card: Daily Routine -->
+<div class="mt-6 px-4 @container">
+<div class="group relative overflow-hidden rounded-2xl bg-surface-dark shadow-lg transition-all hover:shadow-[0_0_20px_rgba(19,236,128,0.1)]">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<img alt="Man lifting weights in a gym with neon lighting" class="h-full w-full object-cover opacity-40 transition-transform duration-500 group-hover:scale-105" data-alt="Dark moody gym setting with weights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxW5f0Jph8hrylUUKs0C-SrkGjZOMdl5WrbwtOlM2_rpg6S44Krqc_YogOfbpRbacvwmC4qrBm8JQS4Pa_Ealo7ByQpHfqs8jmJGJsK80dXstsN0tlP7Dj-bmKvEIpVdEsbu-6KX123faS4LonSjgETDlLaI2DsRZH4hRdiffg0snIe4Ih0mDd-R4cetAMBUTDRD4Q-SskIVSeuzptJwWIBV_O4FOOhZki5DW7ZdDzRaOSKdJhQISka9IrruEIYkMjoqOSq9noV9s"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-surface-dark/80 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col p-5">
+<div class="mb-2 inline-flex w-fit items-center rounded-full bg-primary/20 px-2.5 py-1 text-xs font-semibold text-primary backdrop-blur-sm">
+<span class="material-symbols-outlined mr-1 !text-sm">fitness_center</span>
+                        Día de Empuje
+                    </div>
+<h3 class="mb-1 text-2xl font-bold leading-tight text-white">Rutina de Pecho y Tríceps</h3>
+<p class="mb-6 text-sm text-gray-300">Enfócate en la técnica. ¡Tú puedes!</p>
+<div class="flex items-end justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-text-secondary text-sm">
+<span class="material-symbols-outlined !text-base">timer</span>
+                                45 Minutos
+                            </div>
+<div class="flex items-center gap-2 text-text-secondary text-sm">
+<span class="material-symbols-outlined !text-base">list</span>
+                                6 Ejercicios
+                            </div>
+</div>
+<button class="flex items-center justify-center rounded-xl bg-primary px-6 py-2.5 text-sm font-bold text-background-dark shadow-[0_0_15px_rgba(19,236,128,0.3)] transition-transform active:scale-95">
+                            Comenzar
+                            <span class="material-symbols-outlined ml-1 !text-lg">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="mt-8 px-4">
+<h2 class="mb-4 text-lg font-bold tracking-tight text-slate-900 dark:text-white">Tu Progreso</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Weight Card -->
+<div class="flex flex-col justify-between rounded-2xl bg-surface-dark p-4 shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-[#3d5a4b] text-primary">
+<span class="material-symbols-outlined !text-lg">monitor_weight</span>
+</div>
+<span class="flex items-center text-xs font-medium text-primary">
+<span class="material-symbols-outlined !text-sm">trending_down</span>
+                            -0.5kg
+                        </span>
+</div>
+<div class="mt-3">
+<p class="text-xs font-medium text-text-secondary">Peso Actual</p>
+<p class="text-xl font-bold text-white">75.5 <span class="text-sm font-normal text-gray-400">kg</span></p>
+</div>
+<!-- Mini Graph visual -->
+<div class="mt-2 flex h-8 items-end gap-1">
+<div class="w-full rounded-t-sm bg-primary/20 h-[40%]"></div>
+<div class="w-full rounded-t-sm bg-primary/20 h-[60%]"></div>
+<div class="w-full rounded-t-sm bg-primary/20 h-[50%]"></div>
+<div class="w-full rounded-t-sm bg-primary/20 h-[70%]"></div>
+<div class="w-full rounded-t-sm bg-primary h-[65%]"></div>
+</div>
+</div>
+<!-- Streak Card -->
+<div class="flex flex-col justify-between rounded-2xl bg-surface-dark p-4 shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-[#3d5a4b] text-orange-400">
+<span class="material-symbols-outlined !text-lg">local_fire_department</span>
+</div>
+</div>
+<div class="mt-3">
+<p class="text-xs font-medium text-text-secondary">Racha Semanal</p>
+<p class="text-xl font-bold text-white">3 <span class="text-sm font-normal text-gray-400">Días</span></p>
+</div>
+<div class="mt-4 text-xs text-text-secondary">
+                        ¡Vas genial! Mantén el ritmo.
+                    </div>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="mt-8 px-4">
+<h2 class="mb-4 text-lg font-bold tracking-tight text-slate-900 dark:text-white">Accesos Rápidos</h2>
+<div class="flex gap-3 overflow-x-auto no-scrollbar">
+<button class="flex flex-none items-center gap-2 rounded-xl bg-surface-dark px-4 py-3 pr-5 transition-colors hover:bg-[#234233]">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-400">
+<span class="material-symbols-outlined !text-lg">add</span>
+</div>
+<div class="text-left">
+<p class="text-sm font-bold text-white">Registrar Peso</p>
+</div>
+</button>
+<button class="flex flex-none items-center gap-2 rounded-xl bg-surface-dark px-4 py-3 pr-5 transition-colors hover:bg-[#234233]">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500/20 text-purple-400">
+<span class="material-symbols-outlined !text-lg">calendar_month</span>
+</div>
+<div class="text-left">
+<p class="text-sm font-bold text-white">Crear Rutina</p>
+</div>
+</button>
+<button class="flex flex-none items-center gap-2 rounded-xl bg-surface-dark px-4 py-3 pr-5 transition-colors hover:bg-[#234233]">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-orange-500/20 text-orange-400">
+<span class="material-symbols-outlined !text-lg">history</span>
+</div>
+<div class="text-left">
+<p class="text-sm font-bold text-white">Historial</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Bottom Spacing -->
+<div class="h-6"></div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-30 border-t border-white/5 bg-background-dark/85 px-6 pb-6 pt-3 backdrop-blur-lg">
+<ul class="flex items-center justify-between">
+<li>
+<a class="group flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">home</span>
+<span class="text-[10px] font-medium text-primary">Inicio</span>
+</a>
+</li>
+<li>
+<a class="group flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-white transition-colors">fitness_center</span>
+<span class="text-[10px] font-medium text-gray-500 group-hover:text-white transition-colors">Rutinas</span>
+</a>
+</li>
+<li>
+<a class="group flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-white transition-colors">bar_chart</span>
+<span class="text-[10px] font-medium text-gray-500 group-hover:text-white transition-colors">Progreso</span>
+</a>
+</li>
+<li>
+<a class="group flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-white transition-colors">settings</span>
+<span class="text-[10px] font-medium text-gray-500 group-hover:text-white transition-colors">Ajustes</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</body></html>

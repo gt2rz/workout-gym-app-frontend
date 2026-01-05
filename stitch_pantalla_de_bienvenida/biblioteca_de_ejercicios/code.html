@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Biblioteca de Ejercicios</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#13ec80",
+              "background-light": "#f6f8f7",
+              "background-dark": "#102219",
+              "surface-dark": "#1c3227",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white antialiased selection:bg-primary selection:text-background-dark">
+<div class="relative min-h-screen flex flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden border-x border-gray-200 dark:border-white/5">
+<!-- Top Navigation & Filters (Sticky) -->
+<div class="sticky top-0 z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-xl border-b border-gray-200 dark:border-white/5 pb-2">
+<!-- Header Row -->
+<div class="flex items-center justify-between px-4 h-16">
+<button class="flex items-center justify-center w-10 h-10 -ml-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors text-gray-900 dark:text-white">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+</button>
+<p class="text-[18px] font-bold leading-tight tracking-tight">Biblioteca</p>
+<div class="w-10 flex justify-end">
+<button class="flex items-center justify-center w-10 h-10 -mr-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors text-gray-900 dark:text-white relative">
+<span class="material-symbols-outlined" style="font-size: 24px;">tune</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 pb-2">
+<label class="flex flex-col w-full">
+<div class="flex w-full items-center rounded-xl h-12 bg-white dark:bg-[#1c3227] shadow-sm border border-gray-100 dark:border-transparent group focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<div class="text-gray-400 dark:text-[#92c9ad] flex items-center justify-center pl-4 pr-2" data-icon="MagnifyingGlass">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 bg-transparent border-none text-base text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#92c9ad]/70 focus:outline-none focus:ring-0 h-full font-normal" placeholder="Buscar ejercicio..." value=""/>
+</div>
+</label>
+</div>
+<!-- Chips / Filters -->
+<div class="flex gap-2 overflow-x-auto px-4 py-2 no-scrollbar">
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-lg bg-primary text-background-dark shadow-sm shadow-primary/20 transition-transform active:scale-95">
+<p class="text-sm font-semibold leading-normal">Todo</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-lg bg-white dark:bg-[#1c3227] border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+<p class="text-gray-600 dark:text-white text-sm font-medium leading-normal">Pecho</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-lg bg-white dark:bg-[#1c3227] border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+<p class="text-gray-600 dark:text-white text-sm font-medium leading-normal">Espalda</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-lg bg-white dark:bg-[#1c3227] border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+<p class="text-gray-600 dark:text-white text-sm font-medium leading-normal">Piernas</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-lg bg-white dark:bg-[#1c3227] border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+<p class="text-gray-600 dark:text-white text-sm font-medium leading-normal">Brazos</p>
+</button>
+</div>
+</div>
+<!-- Scrollable Content List -->
+<div class="flex-1 overflow-y-auto px-4 py-4 space-y-6 pb-24">
+<!-- Section: Populares -->
+<div>
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Populares</h3>
+<button class="text-sm font-medium text-primary hover:text-primary/80 transition-colors">Ver todo</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Card 1 -->
+<div class="flex items-center gap-4 rounded-xl bg-white dark:bg-[#1c3227] p-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-none border border-gray-100 dark:border-white/5 active:scale-[0.99] transition-transform duration-100">
+<div class="w-20 h-20 shrink-0 bg-center bg-no-repeat bg-cover rounded-lg bg-gray-200 dark:bg-gray-800" data-alt="Muscular chest man doing bench press exercise" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeyACyNnZ6dJH47aRzoZ_ttB3saJyyctgSbamBXaD51DGGI5V4HXTx7oyY3Wgh0WmOiSModEwDh22CRaRozf3uzG-WKqU_2uLsGQLChljZpcieipXHRpOkD50c2G8bF7IS6xLj5dY7M0SKDY-2WUlLw0-MJVRaio_ro7aER38AxU5pAYEnLBVwsrHkIW6gG1Raeg4Qg2XfKghbPptKyn5fgt27UC7u8GHc8ytfzYsEnqHBYTr76gPeVqL3ywUMkMYAA3fpmWJp9GE");'></div>
+<div class="flex flex-col gap-1 flex-1 min-w-0">
+<p class="text-gray-900 dark:text-white text-base font-bold leading-tight truncate">Press de Banca</p>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-[#92c9ad]">Pecho</span>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal truncate">• Barra Olímpica</p>
+</div>
+</div>
+<button class="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 text-primary hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="flex items-center gap-4 rounded-xl bg-white dark:bg-[#1c3227] p-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-none border border-gray-100 dark:border-white/5 active:scale-[0.99] transition-transform duration-100">
+<div class="w-20 h-20 shrink-0 bg-center bg-no-repeat bg-cover rounded-lg bg-gray-200 dark:bg-gray-800" data-alt="Female athlete doing barbell squats in gym" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA8_DMcEiLzhDeaap2VrGsd-V1xumx-9Py6cA-tgyMH7Z7ykSb1IIJvNoShdFYARdBtsep_CRXgY5yMvcqalwbJmlKyBzaVFglCdF8rC9rswE1L4gyePgyvrg8EluU0Xz39-M7vZFLL1Ehoyuq-m4Du_vWPFRtTy-TmgL7pxbZnlDkFPRFqR9OTWQ90n5f2blZqD5H-t_QQ6JBswu3RoBuVyOfL5yknW0u0Eurgw6XFXkDjEzyeCD4iQNV4gSnF9jFIGo4qXW_6ApQ");'></div>
+<div class="flex flex-col gap-1 flex-1 min-w-0">
+<p class="text-gray-900 dark:text-white text-base font-bold leading-tight truncate">Sentadilla Trasera</p>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-[#92c9ad]">Piernas</span>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal truncate">• Barra</p>
+</div>
+</div>
+<button class="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 text-primary hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Card 3 (Added State) -->
+<div class="flex items-center gap-4 rounded-xl bg-white dark:bg-[#1c3227] p-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-none border border-gray-100 dark:border-white/5 border-l-4 border-l-primary active:scale-[0.99] transition-transform duration-100">
+<div class="w-20 h-20 shrink-0 bg-center bg-no-repeat bg-cover rounded-lg bg-gray-200 dark:bg-gray-800" data-alt="Male doing pull ups on bar back muscles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3LHQNPldOq6GLq8b9UJfqkLJiMvuiKZvBfB3nW-0RZgt4zdRVVH6hRL6UGsuJiROWxphlb-PcDelU3Y4kPd_dp6aA6laKDHur9fZyV-ydAU_6jpIewu8yl6Hsg34Eh0B3NWA3l8UJv2VqjKh6fKQ7nsaPpF4WCdtFP1IF7cjLcypeoadHmpD6I7Vjp7xA0aYtje78kfeyDZRerFNdmYmpsHSCq9aiLxHkb-sshfvPb5MEMrmQ3D_PXQsFXznfGff4B3wHkfV4Fy4");'></div>
+<div class="flex flex-col gap-1 flex-1 min-w-0">
+<p class="text-gray-900 dark:text-white text-base font-bold leading-tight truncate">Dominadas</p>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-[#92c9ad]">Espalda</span>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal truncate">• Peso Corporal</p>
+</div>
+</div>
+<button class="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-primary text-background-dark shadow-[0_0_15px_rgba(19,236,128,0.3)] transition-all">
+<span class="material-symbols-outlined">check</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Section: Recientes -->
+<div>
+<h3 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] mb-3 px-1">Recientes</h3>
+<div class="flex flex-col gap-3">
+<!-- Card 4 -->
+<div class="flex items-center gap-4 rounded-xl bg-white dark:bg-[#1c3227] p-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-none border border-gray-100 dark:border-white/5 active:scale-[0.99] transition-transform duration-100">
+<div class="w-20 h-20 shrink-0 bg-center bg-no-repeat bg-cover rounded-lg bg-gray-200 dark:bg-gray-800" data-alt="Man lifting dumbbells for biceps" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA529Nb3YXPje9X3vuG-57YrkiqtjqqXO5-Dd4rvogQK3EBvsD8cKd2zoYKZtb67JE2ncTwxikJLaC7yiKT6wDYuvZOpFjftE3XhGLerqXuESyBh6x6rr040eYvGD72hyiowtp-Ty55qmxAxTdIa5eGvEgUrl34MU9DQkuFR9AWC8lhYLBA3ueANpOjVlOlluRk62IcN_Yn6EKQx5BlA6XC6a9rv5Wn90TNDr8HigmzEMywHyYBRkp20i8nhk3gft6IhdcewWGnuf0");'></div>
+<div class="flex flex-col gap-1 flex-1 min-w-0">
+<p class="text-gray-900 dark:text-white text-base font-bold leading-tight truncate">Curl de Bíceps</p>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-[#92c9ad]">Brazos</span>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal truncate">• Mancuernas</p>
+</div>
+</div>
+<button class="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 text-primary hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Card 5 -->
+<div class="flex items-center gap-4 rounded-xl bg-white dark:bg-[#1c3227] p-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-none border border-gray-100 dark:border-white/5 active:scale-[0.99] transition-transform duration-100">
+<div class="w-20 h-20 shrink-0 bg-center bg-no-repeat bg-cover rounded-lg bg-gray-200 dark:bg-gray-800" data-alt="Muscular back of man lifting weights" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3aqW2cStjrfk57l9RV4oxbl68KJ3EMb49hlGCVThDbWZItV02K_huObI6dLRXBPaaoEGWs6hKGlNflgzbOv4l1I6V_-OiZP0r-q95i9nNfxXz-f7khJ9EYl837xSjew0Jz3FkUxwA5q2Nm92xAvPcrddzxBA6OIs0kzSWswuEzArRVQVgkpeiLzTEUwUOt_6iTj72_gisWqFdjrUxQG4S8Yzi1AtURaAR5U-mkjoQrldZ9--im8vA1V_5LFUBn8MBFG95yZQzACI");'></div>
+<div class="flex flex-col gap-1 flex-1 min-w-0">
+<p class="text-gray-900 dark:text-white text-base font-bold leading-tight truncate">Remo con Barra</p>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-[#92c9ad]">Espalda</span>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal truncate">• Barra</p>
+</div>
+</div>
+<button class="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 text-primary hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button (Review/Add) -->
+<div class="absolute bottom-6 left-0 right-0 z-10 flex justify-center px-4 pointer-events-none">
+<button class="pointer-events-auto flex items-center gap-3 px-6 h-14 rounded-full bg-primary text-background-dark shadow-[0_8px_25px_rgba(19,236,128,0.4)] hover:scale-105 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">playlist_add</span>
+<span class="font-bold text-lg tracking-wide">Crear Rutina (1)</span>
+</button>
+</div>
+</div>
+</body></html>

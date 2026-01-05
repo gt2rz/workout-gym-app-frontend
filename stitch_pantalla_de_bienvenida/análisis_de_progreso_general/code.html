@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Análisis de Progreso General</title>
+<!-- Google Fonts: Lexend -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "surface-dark": "#1c3026", // Slightly lighter than bg-dark for cards
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for horizontal scroll areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-background-dark">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md p-4 pb-2 border-b border-gray-200 dark:border-white/5">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-white" style="font-size: 24px;">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-2">Progreso General</h1>
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-white" style="font-size: 24px;">calendar_month</span>
+</button>
+<div aria-label="User profile picture" class="size-8 rounded-full overflow-hidden bg-gray-300 ring-2 ring-primary/50" data-alt="Portrait of a user" role="img" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA97iZcPH436OOwXimnrSU_pUAm8Brcs6uqjhiLKXuqgqivfTpZElrHhup2B0-OEF9PSgfjNBKthm5ubbudOK8OLTT1peT73ccUida-CqOfHrFtneHXyeWRXFr50w9X_QvRJAA2PCuqqjm9iDsexPuWZBNckcSL0ga-eLsL8QdzZBVE8bEoZ-HpRCoAAkRoMZOwdw5gqqK5sObul_asOb2IwLEeRAounpr2ZnaN6iE5NyRPWneysAjBxA7oJ0ZkLzucNkA1_B12C8Q'); background-size: cover; background-position: center;"></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col gap-6 pb-24">
+<!-- Filter Chips -->
+<div class="w-full overflow-x-auto no-scrollbar pt-4 px-4">
+<div class="flex gap-3 min-w-max">
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-full bg-primary px-5 transition-transform active:scale-95 shadow-[0_0_10px_rgba(19,236,128,0.3)]">
+<span class="text-background-dark text-sm font-bold leading-normal">Macrociclo</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 px-5 transition-transform active:scale-95">
+<span class="text-slate-600 dark:text-gray-300 text-sm font-medium leading-normal">Microciclo</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 px-5 transition-transform active:scale-95">
+<span class="text-slate-600 dark:text-gray-300 text-sm font-medium leading-normal">Split</span>
+</button>
+</div>
+</div>
+<!-- Hero Chart Section -->
+<section class="px-4">
+<div class="flex flex-col gap-4 rounded-2xl bg-white dark:bg-surface-dark p-5 shadow-sm border border-gray-100 dark:border-white/5">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<p class="text-slate-500 dark:text-gray-400 text-sm font-medium">Peso Corporal Promedio</p>
+<div class="flex items-baseline gap-2">
+<h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">78.5 <span class="text-lg text-slate-500 font-normal">kg</span></h2>
+</div>
+</div>
+<div class="flex items-center gap-1 rounded-lg bg-red-500/10 px-2 py-1">
+<span class="material-symbols-outlined text-red-500 text-sm">trending_down</span>
+<span class="text-red-500 text-xs font-bold">-1.2%</span>
+</div>
+</div>
+<!-- SVG Chart Container -->
+<div class="relative w-full h-[180px] mt-2">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 350 150">
+<!-- Gradient Definition -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#13ec80" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#13ec80" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line class="text-gray-500" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.1" x1="0" x2="350" y1="30" y2="30"></line>
+<line class="text-gray-500" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.1" x1="0" x2="350" y1="80" y2="80"></line>
+<line class="text-gray-500" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.1" x1="0" x2="350" y1="130" y2="130"></line>
+<!-- Area Path -->
+<path d="M0 100 Q 35 110, 70 80 T 140 75 T 210 50 T 280 60 T 350 30 V 150 H 0 Z" fill="url(#chartGradient)"></path>
+<!-- Stroke Path -->
+<path d="M0 100 Q 35 110, 70 80 T 140 75 T 210 50 T 280 60 T 350 30" fill="none" stroke="#13ec80" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Interactive Point (Mockup) -->
+<circle class="dark:stroke-[#102219] stroke-white" cx="280" cy="60" fill="#13ec80" r="4" stroke="#102219" stroke-width="2"></circle>
+<!-- Tooltip (Mockup) -->
+<g transform="translate(250, 10)">
+<rect fill="#13ec80" height="24" rx="4" width="60"></rect>
+<text fill="#102219" font-size="12" font-weight="bold" text-anchor="middle" x="30" y="16">79.2 kg</text>
+</g>
+</svg>
+</div>
+<!-- X Axis Labels -->
+<div class="flex justify-between px-1">
+<span class="text-xs font-medium text-slate-400 dark:text-gray-500">Ene</span>
+<span class="text-xs font-medium text-slate-400 dark:text-gray-500">Feb</span>
+<span class="text-xs font-medium text-slate-400 dark:text-gray-500">Mar</span>
+<span class="text-xs font-medium text-slate-400 dark:text-gray-500">Abr</span>
+<span class="text-xs font-medium text-slate-400 dark:text-gray-500">May</span>
+<span class="text-xs font-medium text-slate-900 dark:text-white">Jun</span>
+</div>
+</div>
+</section>
+<!-- Key Stats Grid -->
+<section class="px-4">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Estadísticas Clave</h3>
+<button class="text-primary text-xs font-bold uppercase tracking-wider">Ver Todo</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- Stat Card 1 -->
+<div class="flex flex-col gap-2 rounded-2xl bg-white dark:bg-surface-dark p-4 border border-gray-100 dark:border-white/5 shadow-sm">
+<div class="flex items-center gap-2 text-slate-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-[20px]">fitness_center</span>
+<span class="text-xs font-medium uppercase tracking-wide">Volumen</span>
+</div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">24.5k</p>
+<p class="text-primary text-xs font-semibold">+5.2% <span class="text-slate-400 dark:text-gray-500 font-normal">vs mes pasado</span></p>
+</div>
+<!-- Stat Card 2 -->
+<div class="flex flex-col gap-2 rounded-2xl bg-white dark:bg-surface-dark p-4 border border-gray-100 dark:border-white/5 shadow-sm">
+<div class="flex items-center gap-2 text-slate-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="text-xs font-medium uppercase tracking-wide">Sesiones</span>
+</div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">12</p>
+<p class="text-primary text-xs font-semibold">+2 <span class="text-slate-400 dark:text-gray-500 font-normal">extra</span></p>
+</div>
+<!-- Stat Card 3 -->
+<div class="flex flex-col gap-2 rounded-2xl bg-white dark:bg-surface-dark p-4 border border-gray-100 dark:border-white/5 shadow-sm">
+<div class="flex items-center gap-2 text-slate-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-[20px]">emoji_events</span>
+<span class="text-xs font-medium uppercase tracking-wide">PRs Rotos</span>
+</div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">4</p>
+<p class="text-xs text-slate-400 dark:text-gray-500">Nuevo en Bench Press</p>
+</div>
+<!-- Stat Card 4 -->
+<div class="flex flex-col gap-2 rounded-2xl bg-white dark:bg-surface-dark p-4 border border-gray-100 dark:border-white/5 shadow-sm">
+<div class="flex items-center gap-2 text-slate-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+<span class="text-xs font-medium uppercase tracking-wide">Tiempo Total</span>
+</div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">14h 20m</p>
+<p class="text-xs text-slate-400 dark:text-gray-500">Avg. 1h 10m / ses</p>
+</div>
+</div>
+</section>
+<!-- Muscle Group Breakdown -->
+<section class="px-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Progreso por Músculo</h3>
+<div class="flex flex-col gap-4 rounded-2xl bg-white dark:bg-surface-dark p-5 shadow-sm border border-gray-100 dark:border-white/5">
+<!-- Item 1 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm">
+<span class="font-medium text-slate-700 dark:text-gray-200">Pierna (Cuádriceps)</span>
+<span class="font-bold text-primary">45% <span class="text-slate-400 dark:text-gray-500 font-normal ml-1">volumen</span></span>
+</div>
+<div class="h-2.5 w-full bg-gray-100 dark:bg-black/40 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[45%] rounded-full shadow-[0_0_8px_rgba(19,236,128,0.4)]"></div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm">
+<span class="font-medium text-slate-700 dark:text-gray-200">Espalda</span>
+<span class="font-bold text-slate-500 dark:text-gray-400">30% <span class="text-slate-400 dark:text-gray-500 font-normal ml-1">volumen</span></span>
+</div>
+<div class="h-2.5 w-full bg-gray-100 dark:bg-black/40 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-gray-600 w-[30%] rounded-full"></div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm">
+<span class="font-medium text-slate-700 dark:text-gray-200">Pecho</span>
+<span class="font-bold text-slate-500 dark:text-gray-400">25% <span class="text-slate-400 dark:text-gray-500 font-normal ml-1">volumen</span></span>
+</div>
+<div class="h-2.5 w-full bg-gray-100 dark:bg-black/40 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-gray-600 w-[25%] rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievements Carousel -->
+<section class="pl-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 pr-4">Logros Recientes</h3>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 pr-4">
+<!-- Achievement 1 -->
+<div class="flex min-w-[160px] flex-col justify-between gap-3 rounded-2xl bg-gradient-to-br from-primary to-[#0eb361] p-4 text-background-dark shadow-lg">
+<div class="size-10 rounded-full bg-background-dark/20 flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-white">workspace_premium</span>
+</div>
+<div>
+<p class="text-2xl font-bold leading-none">100kg</p>
+<p class="text-sm font-semibold opacity-90 mt-1">Club de Sentadilla</p>
+</div>
+</div>
+<!-- Achievement 2 -->
+<div class="flex min-w-[160px] flex-col justify-between gap-3 rounded-2xl bg-white dark:bg-surface-dark p-4 border border-gray-100 dark:border-white/5 shadow-sm">
+<div class="size-10 rounded-full bg-orange-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-500">local_fire_department</span>
+</div>
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white leading-none">10</p>
+<p class="text-sm text-slate-500 dark:text-gray-400 mt-1">Semanas Seguidas</p>
+</div>
+</div>
+<!-- Achievement 3 -->
+<div class="flex min-w-[160px] flex-col justify-between gap-3 rounded-2xl bg-white dark:bg-surface-dark p-4 border border-gray-100 dark:border-white/5 shadow-sm">
+<div class="size-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-500">bolt</span>
+</div>
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white leading-none">Power</p>
+<p class="text-sm text-slate-500 dark:text-gray-400 mt-1">Nuevo 1RM DL</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

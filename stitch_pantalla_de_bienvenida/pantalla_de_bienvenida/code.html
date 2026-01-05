@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gym Tracker Welcome Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        /* Custom gradient for a smoother fade */
+        .fade-overlay {
+            background: linear-gradient(to top, #102219 10%, rgba(16, 34, 25, 0.9) 45%, rgba(16, 34, 25, 0.4) 70%, rgba(16, 34, 25, 0) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-50 antialiased h-screen w-full overflow-hidden flex flex-col">
+<!-- Main Mobile Container -->
+<div class="relative flex-1 w-full h-full flex flex-col bg-background-dark group/design-root overflow-hidden mx-auto max-w-[480px] shadow-2xl">
+<!-- Hero Background Image Section -->
+<div class="absolute inset-0 w-full h-[75%] z-0">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover" data-alt="Monochrome focused athlete preparing for a workout in a dark gym" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJGHMM2ongg9GsaTekTsKxRhn1-qIxD24vSGqlA5DJeXjWGZvebVfTLexm3uKJHY9eJF-Az7eXq4qNTpuiSbx17wjLhehkASKqQzz8566qFFrzxqlfZS1Lihi2HVs8PKDCz0g5MIycU94jYYzzrLX0AYT77UOBj6J188EV0ltEgQFpEnsIMBoMGqgatIs14YsbyC0oGnwKlcuD1YOKEmJvxc-hZTd531hc9LArTFQSKkSAmcgrnpd6KchuGa2VjrtQ_7VuXlV_lcM");'>
+</div>
+<!-- Overlay to ensure text readability -->
+<div class="absolute inset-0 fade-overlay z-10"></div>
+</div>
+<!-- Header / Logo Area -->
+<div class="relative z-20 flex justify-center pt-14 pb-4">
+<div class="flex items-center gap-2 bg-background-dark/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+<span class="material-symbols-outlined text-primary">fitness_center</span>
+<span class="text-white text-sm font-bold tracking-widest uppercase">GymTracker</span>
+</div>
+</div>
+<!-- Main Content Area (Push to bottom) -->
+<div class="relative z-20 mt-auto flex flex-col w-full px-6 pb-10">
+<!-- HeadlineText Component -->
+<div class="flex flex-col gap-2 mb-2">
+<h1 class="text-white tracking-tight text-[40px] font-extrabold leading-[1.1] text-center">
+                    Domina tu <span class="text-primary">Rutina</span>
+</h1>
+</div>
+<!-- BodyText Component -->
+<div class="flex flex-col gap-3 mb-8">
+<p class="text-gray-300 text-lg font-light leading-relaxed text-center">
+                    La herramienta definitiva para registrar tus levantamientos, monitorear tu peso y alcanzar tus metas fitness.
+                </p>
+</div>
+<!-- PageIndicators Component -->
+<div class="flex w-full flex-row items-center justify-center gap-3 py-4 mb-4">
+<div class="h-1.5 w-8 rounded-full bg-primary shadow-[0_0_10px_rgba(19,236,128,0.5)]"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/20"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/20"></div>
+</div>
+<!-- SingleButton Component -->
+<div class="flex flex-col gap-4 justify-center w-full">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary hover:bg-[#0fd671] active:scale-[0.98] transition-all text-background-dark text-lg font-bold leading-normal tracking-wide shadow-[0_0_20px_rgba(19,236,128,0.25)] group">
+<span class="mr-2">Comenzar Ahora</span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<button class="flex w-full cursor-pointer items-center justify-center text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                    ¿Ya tienes cuenta? <span class="text-primary ml-1">Inicia Sesión</span>
+</button>
+</div>
+<!-- Bottom Safe Area Spacer -->
+<div class="h-2"></div>
+</div>
+</div>
+</body></html>

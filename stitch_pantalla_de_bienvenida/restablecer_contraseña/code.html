@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Restablecer Contraseña - Gym Tracker</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "surface-dark": "#193326",
+                        "text-secondary": "#92c9ad",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl">
+<!-- Status Bar Area (Visual representation for phone form factor) -->
+<div class="h-10 w-full bg-background-light dark:bg-background-dark"></div>
+<!-- Top App Bar -->
+<div class="flex items-center px-4 py-2 justify-between sticky top-0 z-10 bg-background-light dark:bg-background-dark">
+<button class="text-gray-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+</button>
+<div class="w-10"></div> <!-- Spacer to balance the title center alignment -->
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col px-6 pt-4 pb-8">
+<!-- Headline -->
+<h1 class="text-gray-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight text-left pb-4 pt-4">
+                Restablecer <br/>Contraseña
+            </h1>
+<!-- Body Text -->
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-relaxed pb-8">
+                ¿Olvidaste tu contraseña? No te preocupes, sucede. Ingresa la dirección de correo asociada a tu cuenta para recibir las instrucciones.
+            </p>
+<!-- Text Field -->
+<div class="w-full mb-8">
+<label class="flex flex-col w-full group">
+<span class="text-gray-700 dark:text-gray-200 text-sm font-medium leading-normal pb-2 ml-1">Correo Electrónico</span>
+<div class="relative flex w-full items-center">
+<input class="peer flex w-full rounded-lg border border-gray-300 dark:border-[#32674d] bg-white dark:bg-surface-dark px-4 py-4 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-text-secondary focus:border-primary dark:focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all duration-200 text-base font-normal leading-normal" placeholder="tu@email.com" type="email" value=""/>
+<div class="absolute right-4 text-gray-400 dark:text-text-secondary peer-focus:text-primary transition-colors pointer-events-none flex items-center">
+<span class="material-symbols-outlined text-[24px]">mail</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Single Button -->
+<div class="mt-auto mb-4">
+<button class="w-full flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-6 bg-primary hover:bg-opacity-90 active:scale-[0.98] transition-all text-background-dark text-base font-bold leading-normal tracking-wide shadow-lg shadow-primary/20">
+<span class="truncate">Enviar enlace</span>
+</button>
+</div>
+<!-- Footer Help Link -->
+<div class="text-center pb-6">
+<p class="text-sm text-gray-500 dark:text-gray-400">
+                    ¿Necesitas ayuda? 
+                    <a class="text-primary font-medium hover:underline decoration-primary underline-offset-4" href="#">Contacta a soporte</a>
+</p>
+</div>
+</div>
+<!-- Optional: Decorative background elements for fitness vibe -->
+<div class="fixed bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-background-dark to-transparent pointer-events-none -z-10 opacity-50 dark:opacity-100"></div>
+</div>
+</body></html>
