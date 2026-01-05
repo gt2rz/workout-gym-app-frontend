@@ -42,16 +42,15 @@ export default function HomeScreen() {
         ]}
       >
         <TouchableOpacity
-          style={[styles.heroCard, { backgroundColor: "#193326" }]}
+          style={[styles.heroCard, { backgroundColor: "transparent" }]}
         >
           <Image
             source={{
-              uri: "https://lh3.googleusercontent.com/aida-public/AB6AXuDxW5f0Jph8hrylUUKs0C-SrkGjZOMdl5WrbwtOlM2_rpg6S44Krqc_YogOfbpRbacvwmC4qrBm8JQS4Pa_Ealo7ByQpHfqs8jmJGJsK80dXstsN0tlP7Dj-bmKvEIpVdEsbu-6KX123faS4LonSjgETDlLaI2DsRZH4hRdiffg0snIe4Ih0mDd-R4cetAMBUTDRD4Q-SskIVSeuzptJwWIBV_O4FOOhZki5DW7ZdDzRaOSKdJhQISka9IrruEIYkMjoqOSq9noV9s",
+              uri: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
             }}
             style={styles.heroCardImage}
             resizeMode="cover"
           />
-          <View style={styles.heroCardOverlay} />
           <View style={styles.heroCardContent}>
             <View style={styles.routineTypeTag}>
               <Ionicons
@@ -70,8 +69,13 @@ export default function HomeScreen() {
             <Text style={[styles.heroSubtitle, { color: "#92c9ad" }]}>
               Enfócate en la técnica. ¡Tú puedes!
             </Text>
-            <View style={styles.heroCardBottom}>
-              <View style={styles.routineDetails}>
+            <View
+              style={[
+                styles.heroCardBottom,
+                { backgroundColor: "rgba(0, 0, 0, 0.0)" },
+              ]}
+            >
+              <View style={[styles.routineDetails]}>
                 <View style={styles.routineDetailItem}>
                   <Ionicons name="time-outline" size={16} color="#92c9ad" />
                   <Text
@@ -358,6 +362,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     overflow: "hidden",
     position: "relative",
+    minHeight: 200,
   },
   heroCardImage: {
     position: "absolute",
@@ -365,7 +370,9 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    opacity: 0.4,
+    width: "100%",
+    height: "100%",
+    opacity: 0.6,
   },
   heroCardOverlay: {
     position: "absolute",
@@ -373,12 +380,18 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(17, 34, 26, 0.8)",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   heroCardContent: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     padding: 20,
-    position: "relative",
     zIndex: 10,
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    justifyContent: "space-between",
   },
   routineTypeTag: {
     flexDirection: "row",
@@ -410,11 +423,13 @@ const styles = StyleSheet.create({
   },
   routineDetails: {
     flex: 1,
+    backgroundColor: "transparent",
   },
   routineDetailItem: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 4,
+    backgroundColor: "transparent",
   },
   routineDetailText: {
     fontSize: 14,
