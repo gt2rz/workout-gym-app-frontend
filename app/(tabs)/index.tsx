@@ -1,15 +1,10 @@
-import { Ionicons } from "@expo/vector-icons";
-import {
-  Dimensions,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { Dimensions, ScrollView, StyleSheet } from "react-native";
 
-import { Text, View } from "@/components/Themed";
+import { View } from "@/components/Themed";
 import GreetingSection from "@/features/home/greeting-section";
 import HeaderHomeSection from "@/features/home/header-home-section";
 import HeroCardDailyRoutineSection from "@/features/home/hero-card-daily-routine-section";
+import QuickActionsSection from "@/features/home/quick-actions-section";
 import StatsGridSection from "@/features/home/stats-grid-section";
 import WeeklyCalendarSection from "@/features/home/weekly-calendar-section";
 import { useHomeData } from "@/hooks/useHomeData";
@@ -42,73 +37,10 @@ export default function HomeScreen() {
       <StatsGridSection />
 
       {/* Quick Actions */}
-      <View style={styles.quickActionsContainer}>
-        <Text style={[styles.sectionTitle, { color: colors.text.light }]}>
-          Accesos Rápidos
-        </Text>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.quickActionsContent}
-        >
-          <TouchableOpacity
-            style={[styles.quickActionButton, { backgroundColor: "#193326" }]}
-          >
-            <View
-              style={[
-                styles.quickActionIcon,
-                { backgroundColor: "rgba(59, 130, 246, 0.2)" },
-              ]}
-            >
-              <Ionicons name="add" size={20} color="#3b82f6" />
-            </View>
-            <Text
-              style={[styles.quickActionText, { color: colors.text.light }]}
-            >
-              Registrar Peso
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.quickActionButton, { backgroundColor: "#193326" }]}
-          >
-            <View
-              style={[
-                styles.quickActionIcon,
-                { backgroundColor: "rgba(147, 51, 234, 0.2)" },
-              ]}
-            >
-              <Ionicons name="calendar-outline" size={20} color="#9333ea" />
-            </View>
-            <Text
-              style={[styles.quickActionText, { color: colors.text.light }]}
-            >
-              Crear Rutina
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.quickActionButton, { backgroundColor: "#193326" }]}
-          >
-            <View
-              style={[
-                styles.quickActionIcon,
-                { backgroundColor: "rgba(249, 115, 22, 0.2)" },
-              ]}
-            >
-              <Ionicons name="time-outline" size={20} color="#f97316" />
-            </View>
-            <Text
-              style={[styles.quickActionText, { color: colors.text.light }]}
-            >
-              Historial
-            </Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </View>
+      <QuickActionsSection />
 
       {/* Bottom spacing */}
-      <View style={{ height: 100 }} />
+      <View style={{ height: 100, backgroundColor: colors.background.dark }} />
     </ScrollView>
   );
 }
