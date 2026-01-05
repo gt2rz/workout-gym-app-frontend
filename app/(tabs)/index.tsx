@@ -10,6 +10,7 @@ import { Text, View } from "@/components/Themed";
 import GreetingSection from "@/features/home/greeting-section";
 import HeaderHomeSection from "@/features/home/header-home-section";
 import HeroCardDailyRoutineSection from "@/features/home/hero-card-daily-routine-section";
+import StatsGridSection from "@/features/home/stats-grid-section";
 import WeeklyCalendarSection from "@/features/home/weekly-calendar-section";
 import { useHomeData } from "@/hooks/useHomeData";
 import { useTheme } from "@/theme";
@@ -38,74 +39,7 @@ export default function HomeScreen() {
       <HeroCardDailyRoutineSection />
 
       {/* Stats Grid */}
-      <View style={styles.statsContainer}>
-        <Text style={[styles.sectionTitle, { color: colors.text.light }]}>
-          Tu Progreso
-        </Text>
-        <View style={styles.statsGrid}>
-          {/* Weight Card */}
-          <View style={[styles.statCard, { backgroundColor: "#193326" }]}>
-            <View style={styles.statCardHeader}>
-              <View style={[styles.statIcon, { backgroundColor: "#3d5a4b" }]}>
-                <Ionicons name="scale-outline" size={18} color="#13ec80" />
-              </View>
-              <View style={styles.statChange}>
-                <Ionicons name="trending-down" size={14} color="#13ec80" />
-                <Text style={[styles.statChangeText, { color: "#13ec80" }]}>
-                  -0.5kg
-                </Text>
-              </View>
-            </View>
-            <View style={styles.statInfo}>
-              <Text style={[styles.statLabel, { color: "#92c9ad" }]}>
-                Peso Actual
-              </Text>
-              <Text style={[styles.statValue, { color: colors.text.light }]}>
-                75.5{" "}
-                <Text style={[styles.statUnit, { color: "#92c9ad" }]}>kg</Text>
-              </Text>
-            </View>
-            <View style={styles.miniGraph}>
-              {[40, 60, 50, 70, 65].map((height, index) => (
-                <View
-                  key={index}
-                  style={[
-                    styles.graphBar,
-                    {
-                      height: `${height}%`,
-                      backgroundColor:
-                        index === 4 ? "#13ec80" : "rgba(19, 236, 128, 0.2)",
-                    },
-                  ]}
-                />
-              ))}
-            </View>
-          </View>
-
-          {/* Streak Card */}
-          <View style={[styles.statCard, { backgroundColor: "#193326" }]}>
-            <View style={styles.statCardHeader}>
-              <View style={[styles.statIcon, { backgroundColor: "#3d5a4b" }]}>
-                <Ionicons name="flame-outline" size={18} color="#ff9500" />
-              </View>
-            </View>
-            <View style={styles.statInfo}>
-              <Text style={[styles.statLabel, { color: "#92c9ad" }]}>
-                Racha Semanal
-              </Text>
-              <Text style={[styles.statValue, { color: colors.text.light }]}>
-                3{" "}
-                <Text style={[styles.statUnit, { color: "#92c9ad" }]}>
-                  Días
-                </Text>
-              </Text>
-            </View>
-            <Text style={[styles.streakMessage, { color: "#92c9ad" }]}>
-              ¡Vas genial! Mantén el ritmo.
-            </Text>
-          </View>
-        </View>
-      </View>
+      <StatsGridSection />
 
       {/* Quick Actions */}
       <View style={styles.quickActionsContainer}>

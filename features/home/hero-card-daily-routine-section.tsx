@@ -180,10 +180,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
   },
-  statsContainer: {
-    paddingHorizontal: 16,
-    marginTop: 32,
-  },
 });
 
 export default HeroCardDailyRoutineSection;
