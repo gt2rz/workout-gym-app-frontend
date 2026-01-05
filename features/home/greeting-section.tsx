@@ -19,7 +19,11 @@ const GreetingSection = () => {
         {getCurrentDate().toUpperCase()}
       </Text>
       <Text style={[styles.greetingText, { color: colors.text.light }]}>
-        Hola, Alex 👋
+        Hola,{" "}
+        <Text style={[styles.greetingBoldText, { color: colors.text.light }]}>
+          Miguel
+        </Text>{" "}
+        👋
       </Text>
     </View>
   );
@@ -38,8 +42,11 @@ const styles = StyleSheet.create({
   },
   greetingText: {
     fontSize: 28,
-    fontWeight: "bold",
+    fontWeight: "light",
     marginTop: 4,
+  },
+  greetingBoldText: {
+    fontWeight: "900",
   },
 });
 
