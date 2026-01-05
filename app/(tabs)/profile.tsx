@@ -1,5 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import {
+  Alert,
   Dimensions,
   Image,
   ScrollView,
@@ -8,12 +10,39 @@ import {
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
+import { useAuth } from "@/context/auth";
 import { useTheme } from "@/theme";
 
 const { width } = Dimensions.get("window");
 
 export default function ProfileScreen() {
   const { colors } = useTheme();
+  const { signOut } = useAuth();
+
+  const handleLogout = () => {
+    Alert.alert(
+      "Cerrar Sesión",
+      "¿Estás seguro de que quieres cerrar sesión?",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel",
+        },
+        {
+          text: "Cerrar Sesión",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              await signOut();
+              router.replace("/(auth)/login");
+            } catch (error) {
+              Alert.alert("Error", "No se pudo cerrar la sesión");
+            }
+          },
+        },
+      ]
+    );
+  };
 
   const statsData = [
     {
@@ -21,14 +50,14 @@ export default function ProfileScreen() {
       label: "Total",
       value: "124",
       subtitle: "Entrenamientos",
-      color: colors.text.secondary,
+      color: colors.textSecondary,
     },
     {
       icon: "timer-outline",
       label: "Tiempo",
       value: "86",
       subtitle: "Horas Totales",
-      color: colors.text.secondary,
+      color: colors.textSecondary,
     },
     {
       icon: "flame-outline",
@@ -43,7 +72,7 @@ export default function ProfileScreen() {
       value: "75.5",
       unit: "kg",
       subtitle: "+0.5kg este mes",
-      color: colors.text.secondary,
+      color: colors.textSecondary,
     },
   ];
 
@@ -70,22 +99,16 @@ export default function ProfileScreen() {
 
   return (
     <ScrollView
-      style={[styles.container, { backgroundColor: colors.background.dark }]}
+      style={[styles.container, { backgroundColor: colors.background }]}
       showsVerticalScrollIndicator={false}
     >
       {/* Header */}
-      <View
-        style={[styles.header, { backgroundColor: colors.background.dark }]}
-      >
-        <Text style={[styles.headerTitle, { color: colors.text.light }]}>
+      <View style={[styles.header, { backgroundColor: colors.background }]}>
+        <Text style={[styles.headerTitle, { color: colors.text }]}>
           Mi Perfil
         </Text>
         <TouchableOpacity style={styles.settingsButton}>
-          <Ionicons
-            name="settings-outline"
-            size={24}
-            color={colors.text.light}
-          />
+          <Ionicons name="settings-outline" size={24} color={colors.text} />
         </TouchableOpacity>
       </View>
 
@@ -108,7 +131,7 @@ export default function ProfileScreen() {
           </TouchableOpacity>
         </View>
 
-        <Text style={[styles.userName, { color: colors.text.light }]}>
+        <Text style={[styles.userName, { color: colors.text }]}>
           Alex Martinez
         </Text>
 
@@ -126,7 +149,7 @@ export default function ProfileScreen() {
           {statsData.map((stat, index) => (
             <View
               key={index}
-              style={[styles.statCard, { backgroundColor: "#193326" }]}
+              style={[styles.statCard, { backgroundColor: colors.surface }]}
             >
               <View style={styles.statHeader}>
                 <Ionicons
@@ -138,11 +161,11 @@ export default function ProfileScreen() {
                   {stat.label.toUpperCase()}
                 </Text>
               </View>
-              <Text style={[styles.statValue, { color: colors.text.light }]}>
+              <Text style={[styles.statValue, { color: colors.text }]}>
                 {stat.value}
                 {stat.unit && (
                   <Text
-                    style={[styles.statUnit, { color: colors.text.secondary }]}
+                    style={[styles.statUnit, { color: colors.textSecondary }]}
                   >
                     {" "}
                     {stat.unit}
@@ -156,7 +179,7 @@ export default function ProfileScreen() {
                     color:
                       stat.color === "#13ec80"
                         ? "#13ec80"
-                        : colors.text.secondary,
+                        : colors.textSecondary,
                   },
                 ]}
               >
@@ -169,9 +192,11 @@ export default function ProfileScreen() {
 
       {/* Progress Chart Section */}
       <View style={styles.chartSection}>
-        <View style={[styles.chartContainer, { backgroundColor: "#193326" }]}>
+        <View
+          style={[styles.chartContainer, { backgroundColor: colors.surface }]}
+        >
           <View style={styles.chartHeader}>
-            <Text style={[styles.chartTitle, { color: colors.text.light }]}>
+            <Text style={[styles.chartTitle, { color: colors.text }]}>
               Progreso de Peso
             </Text>
             <TouchableOpacity>
@@ -200,7 +225,7 @@ export default function ProfileScreen() {
                 ))}
               </View>
               <Text
-                style={[styles.chartLabel, { color: colors.text.secondary }]}
+                style={[styles.chartLabel, { color: colors.textSecondary }]}
               >
                 Últimos 5 meses
               </Text>
@@ -211,7 +236,9 @@ export default function ProfileScreen() {
 
       {/* Menu Actions */}
       <View style={styles.menuSection}>
-        <View style={[styles.menuContainer, { backgroundColor: "#193326" }]}>
+        <View
+          style={[styles.menuContainer, { backgroundColor: colors.surface }]}
+        >
           {menuItems.map((item, index) => (
             <View key={index}>
               <TouchableOpacity style={styles.menuItem}>
@@ -228,23 +255,21 @@ export default function ProfileScreen() {
                       color={item.iconColor}
                     />
                   </View>
-                  <Text
-                    style={[styles.menuItemText, { color: colors.text.light }]}
-                  >
+                  <Text style={[styles.menuItemText, { color: colors.text }]}>
                     {item.title}
                   </Text>
                 </View>
                 <Ionicons
                   name="chevron-forward"
                   size={20}
-                  color={colors.text.secondary}
+                  color={colors.textSecondary}
                 />
               </TouchableOpacity>
               {index < menuItems.length - 1 && (
                 <View
                   style={[
                     styles.menuSeparator,
-                    { backgroundColor: colors.text.secondary },
+                    { backgroundColor: colors.textSecondary },
                   ]}
                 />
               )}
@@ -252,7 +277,7 @@ export default function ProfileScreen() {
           ))}
         </View>
 
-        <TouchableOpacity style={styles.logoutButton}>
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Text style={styles.logoutText}>Cerrar Sesión</Text>
         </TouchableOpacity>
       </View>
