@@ -1,7 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import {
   Dimensions,
-  Image,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
@@ -10,6 +9,7 @@ import {
 import { Text, View } from "@/components/Themed";
 import GreetingSection from "@/features/home/greeting-section";
 import HeaderHomeSection from "@/features/home/header-home-section";
+import HeroCardDailyRoutineSection from "@/features/home/hero-card-daily-routine-section";
 import WeeklyCalendarSection from "@/features/home/weekly-calendar-section";
 import { useHomeData } from "@/hooks/useHomeData";
 import { useTheme } from "@/theme";
@@ -35,81 +35,7 @@ export default function HomeScreen() {
       <WeeklyCalendarSection />
 
       {/* Hero Card: Daily Routine */}
-      <View
-        style={[
-          styles.heroCardContainer,
-          { backgroundColor: colors.background.dark },
-        ]}
-      >
-        <TouchableOpacity
-          style={[styles.heroCard, { backgroundColor: "transparent" }]}
-        >
-          <Image
-            source={{
-              uri: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-            }}
-            style={styles.heroCardImage}
-            resizeMode="cover"
-          />
-          <View style={styles.heroCardContent}>
-            <View style={styles.routineTypeTag}>
-              <Ionicons
-                name="barbell-outline"
-                size={14}
-                color="#13ec80"
-                style={{ marginRight: 4 }}
-              />
-              <Text style={[styles.routineTypeText, { color: "#13ec80" }]}>
-                Día de Empuje
-              </Text>
-            </View>
-            <Text style={[styles.heroTitle, { color: colors.text.light }]}>
-              Rutina de Pecho y Tríceps
-            </Text>
-            <Text style={[styles.heroSubtitle, { color: "#92c9ad" }]}>
-              Enfócate en la técnica. ¡Tú puedes!
-            </Text>
-            <View
-              style={[
-                styles.heroCardBottom,
-                { backgroundColor: "rgba(0, 0, 0, 0.0)" },
-              ]}
-            >
-              <View style={[styles.routineDetails]}>
-                <View style={styles.routineDetailItem}>
-                  <Ionicons name="time-outline" size={16} color="#92c9ad" />
-                  <Text
-                    style={[styles.routineDetailText, { color: "#92c9ad" }]}
-                  >
-                    45 Minutos
-                  </Text>
-                </View>
-                <View style={styles.routineDetailItem}>
-                  <Ionicons name="list-outline" size={16} color="#92c9ad" />
-                  <Text
-                    style={[styles.routineDetailText, { color: "#92c9ad" }]}
-                  >
-                    6 Ejercicios
-                  </Text>
-                </View>
-              </View>
-              <TouchableOpacity
-                style={[styles.startButton, { backgroundColor: "#13ec80" }]}
-              >
-                <Text style={[styles.startButtonText, { color: "#11221a" }]}>
-                  Comenzar
-                </Text>
-                <Ionicons
-                  name="play"
-                  size={18}
-                  color="#11221a"
-                  style={{ marginLeft: 4 }}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </TouchableOpacity>
-      </View>
+      <HeroCardDailyRoutineSection />
 
       {/* Stats Grid */}
       <View style={styles.statsContainer}>
