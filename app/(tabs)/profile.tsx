@@ -50,14 +50,14 @@ export default function ProfileScreen() {
       label: "Total",
       value: "124",
       subtitle: "Entrenamientos",
-      color: colors.textSecondary,
+      color: colors.text.secondary,
     },
     {
       icon: "timer-outline",
       label: "Tiempo",
       value: "86",
       subtitle: "Horas Totales",
-      color: colors.textSecondary,
+      color: colors.text.secondary,
     },
     {
       icon: "flame-outline",
@@ -72,7 +72,7 @@ export default function ProfileScreen() {
       value: "75.5",
       unit: "kg",
       subtitle: "+0.5kg este mes",
-      color: colors.textSecondary,
+      color: colors.text.secondary,
     },
   ];
 
@@ -99,7 +99,7 @@ export default function ProfileScreen() {
 
   return (
     <ScrollView
-      style={[styles.container, { backgroundColor: colors.background }]}
+      style={[styles.container, { backgroundColor: colors.background.dark }]}
       showsVerticalScrollIndicator={false}
     >
       {/* Header */}
@@ -131,7 +131,7 @@ export default function ProfileScreen() {
           </TouchableOpacity>
         </View>
 
-        <Text style={[styles.userName, { color: colors.text }]}>
+        <Text style={[styles.userName, { color: colors.text.light }]}>
           Alex Martinez
         </Text>
 
@@ -149,7 +149,10 @@ export default function ProfileScreen() {
           {statsData.map((stat, index) => (
             <View
               key={index}
-              style={[styles.statCard, { backgroundColor: colors.surface }]}
+              style={[
+                styles.statCard,
+                { backgroundColor: colors.surface.primary },
+              ]}
             >
               <View style={styles.statHeader}>
                 <Ionicons
@@ -161,11 +164,11 @@ export default function ProfileScreen() {
                   {stat.label.toUpperCase()}
                 </Text>
               </View>
-              <Text style={[styles.statValue, { color: colors.text }]}>
+              <Text style={[styles.statValue, { color: colors.text.light }]}>
                 {stat.value}
                 {stat.unit && (
                   <Text
-                    style={[styles.statUnit, { color: colors.textSecondary }]}
+                    style={[styles.statUnit, { color: colors.text.secondary }]}
                   >
                     {" "}
                     {stat.unit}
@@ -179,7 +182,7 @@ export default function ProfileScreen() {
                     color:
                       stat.color === "#13ec80"
                         ? "#13ec80"
-                        : colors.textSecondary,
+                        : colors.text.secondary,
                   },
                 ]}
               >
@@ -196,7 +199,7 @@ export default function ProfileScreen() {
           style={[styles.chartContainer, { backgroundColor: colors.surface }]}
         >
           <View style={styles.chartHeader}>
-            <Text style={[styles.chartTitle, { color: colors.text }]}>
+            <Text style={[styles.chartTitle, { color: colors.text.light }]}>
               Progreso de Peso
             </Text>
             <TouchableOpacity>
@@ -225,7 +228,7 @@ export default function ProfileScreen() {
                 ))}
               </View>
               <Text
-                style={[styles.chartLabel, { color: colors.textSecondary }]}
+                style={[styles.chartLabel, { color: colors.text.secondary }]}
               >
                 Últimos 5 meses
               </Text>
@@ -269,7 +272,7 @@ export default function ProfileScreen() {
                 <View
                   style={[
                     styles.menuSeparator,
-                    { backgroundColor: colors.textSecondary },
+                    { backgroundColor: colors.text.secondary },
                   ]}
                 />
               )}
@@ -277,7 +280,11 @@ export default function ProfileScreen() {
           ))}
         </View>
 
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+        <TouchableOpacity
+          style={styles.logoutButton}
+          onPress={handleLogout}
+          activeOpacity={0.7}
+        >
           <Text style={styles.logoutText}>Cerrar Sesión</Text>
         </TouchableOpacity>
       </View>
