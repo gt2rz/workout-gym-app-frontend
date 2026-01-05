@@ -2,7 +2,7 @@ import { View } from "@/components/Themed";
 import { useHomeData } from "@/hooks/useHomeData";
 import { useTheme } from "@/theme";
 import React from "react";
-import { StyleSheet, Text, ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 const WeeklyCalendarSection = () => {
   const { colors } = useTheme();
@@ -38,7 +38,13 @@ const WeeklyCalendarSection = () => {
         contentContainerStyle={styles.weeklyCalendarContent}
       >
         {weekDays.map((day, index) => (
-          <View key={index} style={[styles.dayItem, { backgroundColor: colors.background.dark }]}>
+          <View
+            key={index}
+            style={[
+              styles.dayItem,
+              { backgroundColor: colors.background.dark },
+            ]}
+          >
             <Text style={[styles.dayName, { color: "#92c9ad" }]}>
               {day.name}
             </Text>
@@ -77,11 +83,11 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
   },
   viewAllButton: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "500",
   },
   weeklyCalendar: {

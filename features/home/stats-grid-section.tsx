@@ -86,7 +86,7 @@ const StatsGridSection = () => {
 
 const styles = StyleSheet.create({
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
   },
   startButtonText: {
