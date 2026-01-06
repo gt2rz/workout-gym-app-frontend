@@ -1,10 +1,10 @@
 export const Colors = {
   // Colores principales
   primary: {
-    main: '#13ec80',
-    light: '#10B981',
-    dark: '#0fb360',
-    contrast: '#11221a',
+    main: '#14ec81',
+    light: '#09f27eff',
+    dark: '#36a16bff',
+    contrast: '#ffffff',
   },
   
   // Colores secundarios (verde para registro/success)
@@ -17,37 +17,44 @@ export const Colors = {
   
   // Colores de acento (amarillo/dorado)
   accent: {
-    main: '#c5b013',
-    light: '#ced817ff',
-    dark: '#f39c12',
-    contrast: '#2c3e50',
+    main: '#14ec81',
+    light: '#09f27eff',
+    dark: '#36a16bff',
+    contrast: '#ffffff',
   },
   
   // Colores de fondo
   background: {
-    primary: '#f8f9fa',
-    secondary: '#ffffff',
-    dark: '#11221a',
+    primary: '#102318',
+    secondary: '#0f3422',
+    dark: '#08140dff',
     overlay: 'rgba(17, 34, 26, 0.7)',
     transparent: 'transparent',
+    light: '#246946ff',
   },
 
   // Superficies (para tarjetas y elementos elevados)
   surface: {
     primary: '#193326',
-    secondary: '#ffffff',
-    dark: '#193326',
+    secondary: '#103624',
+    dark: '#1c2f25ff',
+  },
+
+  inputs: {
+    background: '#193326',
+    border: '#287752ff',
+    placeholder: '#517865',
+    text: '#ffffff',
   },
   
   // Colores de texto
   text: {
-    primary: '#2c3e50',
-    secondary: '#92c9ad',
+    primary: '#ddf9e4ff',
+    secondary: '#80b298',
     light: '#ffffff',
-    muted: '#999999',
-    accent: '#c4c7acff',
-    link: '#13ec80',
-    copyright: '#888888',
+    muted: '#9eaf9cff',
+    accent: '#13ea80',
+    link: '#14ec81',
   },
   
   // Estados (success, warning, error)
@@ -60,9 +67,9 @@ export const Colors = {
   
   // Bordes y divisores
   border: {
-    light: '#dddddd',
-    medium: '#32674d',
-    dark: '#95a5a6',
+    light: '#21432e',
+    medium: '#163b27',
+    dark: '#0b1f14',
   },
   
   // Sombras
