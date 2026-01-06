@@ -539,16 +539,17 @@ const styles = StyleSheet.create({
   },
   footerSection: {
     alignItems: "center",
-    marginTop: "auto",
+    marginTop: 12,
     paddingTop: 40,
     backgroundColor: "transparent",
+    justifyContent: "center",
   },
   registerText: {
     fontSize: 14,
     textAlign: "center",
   },
   registerLink: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "600",
   },
 });
