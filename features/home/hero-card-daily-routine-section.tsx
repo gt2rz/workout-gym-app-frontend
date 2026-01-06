@@ -1,6 +1,7 @@
 import { Text, View } from "@/components/Themed";
 import { useTheme } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 
@@ -17,6 +18,11 @@ const HeroCardDailyRoutineSection = () => {
       <TouchableOpacity
         style={[styles.heroCard, { backgroundColor: "transparent" }]}
       >
+        <LinearGradient
+          colors={["#1acf9c8c", "#133e259c", "#083d1ef7"]}
+          locations={[0, 0.4, 1]}
+          style={styles.backgroundGradient}
+        />
         <Image
           source={{
             uri: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
@@ -86,6 +92,16 @@ const styles = StyleSheet.create({
   heroCardContainer: {
     paddingHorizontal: 16,
     marginTop: 24,
+  },
+  backgroundGradient: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: "100%",
+    height: "100%",
+    zIndex: 5,
   },
   heroCard: {
     borderRadius: 16,

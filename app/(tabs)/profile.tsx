@@ -12,6 +12,7 @@ import {
 import { Text, View } from "@/components/Themed";
 import { useAuth } from "@/context/auth";
 import { useTheme } from "@/theme";
+import { LinearGradient } from "expo-linear-gradient";
 
 const { width } = Dimensions.get("window");
 
@@ -102,13 +103,28 @@ export default function ProfileScreen() {
       style={[styles.container, { backgroundColor: colors.background.dark }]}
       showsVerticalScrollIndicator={false}
     >
+      {/* Background Gradient */}
+      <LinearGradient
+        colors={[colors.background.light, "transparent"]}
+        style={styles.backgroundGradient}
+      />
+
       {/* Header */}
-      <View style={[styles.header, { backgroundColor: colors.background }]}>
-        <Text style={[styles.headerTitle, { color: colors.text }]}>
+      <View
+        style={[
+          styles.header,
+          { backgroundColor: colors.background.transparent },
+        ]}
+      >
+        <Text style={[styles.headerTitle, { color: colors.text.primary }]}>
           Mi Perfil
         </Text>
         <TouchableOpacity style={styles.settingsButton}>
-          <Ionicons name="settings-outline" size={24} color={colors.text} />
+          <Ionicons
+            name="settings-outline"
+            size={24}
+            color={colors.text.primary}
+          />
         </TouchableOpacity>
       </View>
 
@@ -132,7 +148,7 @@ export default function ProfileScreen() {
         </View>
 
         <Text style={[styles.userName, { color: colors.text.light }]}>
-          Alex Martinez
+          Miguel Gutiérrez
         </Text>
 
         <View style={styles.membershipBadge}>
@@ -196,7 +212,10 @@ export default function ProfileScreen() {
       {/* Progress Chart Section */}
       <View style={styles.chartSection}>
         <View
-          style={[styles.chartContainer, { backgroundColor: colors.surface }]}
+          style={[
+            styles.chartContainer,
+            { backgroundColor: colors.background.primary },
+          ]}
         >
           <View style={styles.chartHeader}>
             <Text style={[styles.chartTitle, { color: colors.text.light }]}>
@@ -240,12 +259,18 @@ export default function ProfileScreen() {
       {/* Menu Actions */}
       <View style={styles.menuSection}>
         <View
-          style={[styles.menuContainer, { backgroundColor: colors.surface }]}
+          style={[
+            styles.menuContainer,
+            { backgroundColor: colors.background.primary },
+          ]}
         >
           {menuItems.map((item, index) => (
-            <View key={index}>
+            <View
+              key={index}
+              style={{ backgroundColor: colors.background.primary }}
+            >
               <TouchableOpacity style={styles.menuItem}>
-                <View style={styles.menuItemLeft}>
+                <View style={[styles.menuItemLeft]}>
                   <View
                     style={[
                       styles.menuIconContainer,
@@ -258,14 +283,19 @@ export default function ProfileScreen() {
                       color={item.iconColor}
                     />
                   </View>
-                  <Text style={[styles.menuItemText, { color: colors.text }]}>
+                  <Text
+                    style={[
+                      styles.menuItemText,
+                      { color: colors.text.primary },
+                    ]}
+                  >
                     {item.title}
                   </Text>
                 </View>
                 <Ionicons
                   name="chevron-forward"
                   size={20}
-                  color={colors.textSecondary}
+                  color={colors.text.secondary}
                 />
               </TouchableOpacity>
               {index < menuItems.length - 1 && (
@@ -290,7 +320,7 @@ export default function ProfileScreen() {
       </View>
 
       {/* Bottom spacing */}
-      <View style={{ height: 100 }} />
+      <View style={{ height: 100, backgroundColor: "transparent" }} />
     </ScrollView>
   );
 }
@@ -299,6 +329,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  backgroundGradient: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 200,
+    // zIndex: 0,
+  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -306,6 +344,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     paddingTop: 50,
+    backgroundColor: "transparent",
   },
   headerTitle: {
     fontSize: 20,
@@ -322,10 +361,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 24,
+    backgroundColor: "transparent",
   },
   avatarContainer: {
     position: "relative",
     marginBottom: 16,
+    backgroundColor: "transparent",
   },
   avatarBorder: {
     width: 112,
@@ -333,11 +374,13 @@ const styles = StyleSheet.create({
     borderRadius: 56,
     borderWidth: 4,
     padding: 4,
+    backgroundColor: "transparent",
   },
   avatar: {
     width: "100%",
     height: "100%",
     borderRadius: 48,
+    backgroundColor: "transparent",
   },
   editButton: {
     position: "absolute",
@@ -372,12 +415,14 @@ const styles = StyleSheet.create({
   statsSection: {
     paddingHorizontal: 16,
     paddingBottom: 24,
+    backgroundColor: "transparent",
   },
   statsGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
     gap: 12,
+    backgroundColor: "transparent",
   },
   statCard: {
     width: (width - 44) / 2,
@@ -389,6 +434,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+    backgroundColor: "transparent",
   },
   statLabel: {
     fontSize: 10,
@@ -409,16 +455,19 @@ const styles = StyleSheet.create({
   chartSection: {
     paddingHorizontal: 16,
     paddingBottom: 24,
+    backgroundColor: "transparent",
   },
   chartContainer: {
     borderRadius: 12,
     padding: 20,
+    backgroundColor: "transparent",
   },
   chartHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 16,
+    backgroundColor: "transparent",
   },
   chartTitle: {
     fontSize: 18,
@@ -432,12 +481,14 @@ const styles = StyleSheet.create({
     height: 120,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "transparent",
   },
   chartPlaceholder: {
     width: "100%",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "transparent",
   },
   chartBars: {
     flexDirection: "row",
@@ -445,25 +496,30 @@ const styles = StyleSheet.create({
     height: 80,
     width: "80%",
     gap: 8,
+    backgroundColor: "transparent",
   },
   chartBarContainer: {
     flex: 1,
     height: "100%",
     justifyContent: "flex-end",
+    backgroundColor: "transparent",
   },
   chartBar: {
     width: "100%",
     borderRadius: 2,
     minHeight: 8,
+    backgroundColor: "transparent",
   },
   chartLabel: {
     fontSize: 12,
     marginTop: 8,
     textAlign: "center",
+    backgroundColor: "transparent",
   },
   menuSection: {
     paddingHorizontal: 16,
     paddingBottom: 32,
+    backgroundColor: "transparent",
   },
   menuContainer: {
     borderRadius: 12,
@@ -476,11 +532,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 16,
     paddingHorizontal: 16,
+    backgroundColor: "transparent",
   },
   menuItemLeft: {
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
+    backgroundColor: "transparent",
   },
   menuIconContainer: {
     width: 40,

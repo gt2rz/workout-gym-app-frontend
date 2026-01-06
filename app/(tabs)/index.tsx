@@ -27,25 +27,17 @@ export default function HomeScreen() {
         colors={[colors.background.light, "transparent"]}
         style={styles.backgroundGradient}
       />
-      
       {/* Header */}
       <HeaderHomeSection />
-
       {/* Greeting Section */}
       <GreetingSection />
-
       {/* Weekly Calendar */}
       <WeeklyCalendarSection />
-
       {/* Hero Card: Daily Routine */}
       <HeroCardDailyRoutineSection />
-
       {/* Stats Grid */}
-      <StatsGridSection />
-
-      {/* Quick Actions */}
+      <StatsGridSection />x{/* Quick Actions */}
       <QuickActionsSection />
-
       {/* Bottom spacing */}
       <View style={{ height: 100, backgroundColor: colors.background.dark }} />
     </ScrollView>
@@ -61,7 +53,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: 400,
+    height: 200,
     // zIndex: 0,
   },
   header: {
