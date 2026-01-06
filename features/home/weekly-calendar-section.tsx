@@ -12,13 +12,13 @@ const WeeklyCalendarSection = () => {
     <View
       style={[
         styles.weeklyCalendarContainer,
-        { backgroundColor: colors.background.dark },
+        { backgroundColor: colors.background.transparent },
       ]}
     >
       <View
         style={[
           styles.sectionHeader,
-          { backgroundColor: colors.background.dark },
+          { backgroundColor: colors.background.transparent },
         ]}
       >
         <Text style={[styles.sectionTitle, { color: colors.text.light }]}>
@@ -42,7 +42,7 @@ const WeeklyCalendarSection = () => {
             key={index}
             style={[
               styles.dayItem,
-              { backgroundColor: colors.background.dark },
+              { backgroundColor: colors.background.transparent },
             ]}
           >
             <Text style={[styles.dayName, { color: "#92c9ad" }]}>

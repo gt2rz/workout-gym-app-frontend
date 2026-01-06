@@ -8,9 +8,9 @@ const HeaderHomeSection = () => {
   const { colors } = useTheme();
 
   return (
-    <View style={[styles.header, { backgroundColor: colors.background.dark }]}>
+    <View style={[styles.header, { backgroundColor: colors.background.transparent }]}>
       <View
-        style={[styles.userInfo, { backgroundColor: colors.background.dark }]}
+        style={[styles.userInfo, { backgroundColor: colors.background.transparent }]}
       >
         <Image
           source={{

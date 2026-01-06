@@ -12,7 +12,7 @@ const GreetingSection = () => {
     <View
       style={[
         styles.greetingContainer,
-        { backgroundColor: colors.background.dark },
+        { backgroundColor: colors.background.transparent },
       ]}
     >
       <Text style={[styles.dateText, { color: "#92c9ad" }]}>

@@ -11,14 +11,17 @@ const StatsGridSection = () => {
     <View
       style={[
         styles.statsContainer,
-        { backgroundColor: colors.background.dark },
+        { backgroundColor: colors.background.transparent },
       ]}
     >
       <Text style={[styles.sectionTitle, { color: colors.text.light }]}>
         Tu Progreso
       </Text>
       <View
-        style={[styles.statsGrid, { backgroundColor: colors.background.dark }]}
+        style={[
+          styles.statsGrid,
+          { backgroundColor: colors.background.transparent },
+        ]}
       >
         {/* Weight Card */}
         <View style={[styles.statCard, { backgroundColor: "#193326" }]}>

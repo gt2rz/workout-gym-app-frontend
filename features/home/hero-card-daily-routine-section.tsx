@@ -11,7 +11,7 @@ const HeroCardDailyRoutineSection = () => {
     <View
       style={[
         styles.heroCardContainer,
-        { backgroundColor: colors.background.dark },
+        { backgroundColor: colors.background.transparent },
       ]}
     >
       <TouchableOpacity

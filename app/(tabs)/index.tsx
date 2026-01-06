@@ -9,6 +9,7 @@ import StatsGridSection from "@/features/home/stats-grid-section";
 import WeeklyCalendarSection from "@/features/home/weekly-calendar-section";
 import { useHomeData } from "@/hooks/useHomeData";
 import { useTheme } from "@/theme";
+import { LinearGradient } from "expo-linear-gradient";
 
 const { width } = Dimensions.get("window");
 
@@ -21,6 +22,12 @@ export default function HomeScreen() {
       style={[styles.container, { backgroundColor: colors.background.dark }]}
       showsVerticalScrollIndicator={false}
     >
+      {/* Background Gradient */}
+      <LinearGradient
+        colors={[colors.background.light, "transparent"]}
+        style={styles.backgroundGradient}
+      />
+      
       {/* Header */}
       <HeaderHomeSection />
 
@@ -48,6 +55,14 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  backgroundGradient: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 400,
+    // zIndex: 0,
   },
   header: {
     flexDirection: "row",

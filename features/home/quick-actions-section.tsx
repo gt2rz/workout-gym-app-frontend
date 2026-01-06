@@ -11,7 +11,7 @@ const QuickActionsSection = () => {
     <View
       style={[
         styles.quickActionsContainer,
-        { backgroundColor: colors.background.dark },
+        { backgroundColor: colors.background.transparent },
       ]}
     >
       <Text style={[styles.sectionTitle, { color: colors.text.light }]}>
