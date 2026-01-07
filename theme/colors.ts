@@ -55,6 +55,7 @@ export const Colors = {
     muted: '#9eaf9cff',
     accent: '#13ea80',
     link: '#14ec81',
+    dark: '#0b1f14ff',
   },
   
   // Estados (success, warning, error)
