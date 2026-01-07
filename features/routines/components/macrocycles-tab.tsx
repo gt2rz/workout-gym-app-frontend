@@ -46,9 +46,16 @@ export function MacrocyclesTab({ onRoutinePress }: MacrocyclesTabProps) {
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { backgroundColor: colors.background.primary }]}
+    >
       {/* Active Program Section */}
-      <View style={styles.section}>
+      <View
+        style={[
+          styles.section,
+          { backgroundColor: colors.background.transparent },
+        ]}
+      >
         <SectionHeader title="Macrociclo Activo" icon="flash" />
 
         {/* Active Program Card */}
@@ -93,7 +100,12 @@ export function MacrocyclesTab({ onRoutinePress }: MacrocyclesTabProps) {
               </View>
             </ImageBackground>
 
-            <View style={styles.cardContent}>
+            <View
+              style={[
+                styles.cardContent,
+                { backgroundColor: colors.surface.primary },
+              ]}
+            >
               {/* Progress Bar */}
               <View style={styles.progressSection}>
                 <View style={styles.progressHeader}>
@@ -326,6 +338,7 @@ const styles = StyleSheet.create({
   },
   section: {
     paddingHorizontal: 16,
+    backgroundColor: "transparent",
   },
   sectionHeader: {
     flexDirection: "row",
@@ -398,11 +411,13 @@ const styles = StyleSheet.create({
   },
   progressSection: {
     gap: 6,
+    backgroundColor: "transparent",
   },
   progressHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
+    backgroundColor: "transparent",
   },
   progressLabel: {
     fontSize: 10,
@@ -426,15 +441,18 @@ const styles = StyleSheet.create({
   detailsGrid: {
     flexDirection: "row",
     gap: 12,
+    backgroundColor: "transparent",
   },
   detailItem: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+    backgroundColor: "transparent",
   },
   detailInfo: {
     flex: 1,
+    backgroundColor: "transparent",
   },
   detailLabel: {
     fontSize: 10,
@@ -465,6 +483,7 @@ const styles = StyleSheet.create({
   },
   upcomingCards: {
     gap: 12,
+    backgroundColor: "transparent",
   },
   upcomingCard: {
     flexDirection: "row",
@@ -478,6 +497,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 2,
     elevation: 2,
+    backgroundColor: "transparent",
   },
   upcomingImage: {
     width: 80,
@@ -491,6 +511,7 @@ const styles = StyleSheet.create({
   upcomingContent: {
     flex: 1,
     gap: 4,
+    backgroundColor: "transparent",
   },
   upcomingTitle: {
     fontSize: 16,

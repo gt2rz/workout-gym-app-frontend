@@ -35,7 +35,7 @@ export const Colors = {
 
   // Superficies (para tarjetas y elementos elevados)
   surface: {
-    primary: '#193326',
+    primary: '#224634ff',
     secondary: '#103624',
     dark: '#1c2f25ff',
   },

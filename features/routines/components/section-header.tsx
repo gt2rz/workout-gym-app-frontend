@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 12,
     flex: 1,
+    backgroundColor: "transparent",
   },
   title: {
     fontSize: 22,

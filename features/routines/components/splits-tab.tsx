@@ -2,12 +2,7 @@ import { Text, View } from "@/components/Themed";
 import { useTheme } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import {
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { SectionList, StyleSheet, TouchableOpacity } from "react-native";
 import {
   mockRoutineStats,
   mockSplits,
@@ -27,6 +22,19 @@ export function SplitsTab({ onRoutinePress }: SplitsTabProps) {
   const handleRoutinePress = (id: string) => {
     onRoutinePress?.(id);
   };
+
+  const sections = [
+    {
+      title: "Splits Disponibles",
+      data: splits,
+      type: "splits" as const,
+    },
+    {
+      title: "Esta Semana",
+      data: currentWeekSessions,
+      type: "sessions" as const,
+    },
+  ];
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -275,45 +283,56 @@ export function SplitsTab({ onRoutinePress }: SplitsTabProps) {
     </TouchableOpacity>
   );
 
-  return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      {/* Available Splits */}
-      <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: colors.text.primary }]}>
-          Splits Disponibles
-        </Text>
-        <FlatList
-          data={splits}
-          renderItem={renderSplit}
-          keyExtractor={(item) => item.id}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
-        />
-      </View>
-
-      {/* Current Week Schedule */}
-      <View style={styles.section}>
-        <View style={styles.weekHeader}>
-          <Text style={[styles.sectionTitle, { color: colors.text.primary }]}>
-            Esta Semana
-          </Text>
-          <View style={styles.weekProgress}>
-            <Text style={[styles.progressText, { color: colors.primary.main }]}>
-              2/6 completadas
+  const renderSectionHeader = ({
+    section,
+  }: {
+    section: (typeof sections)[0];
+  }) => {
+    if (section.type === "sessions") {
+      return (
+        <View style={styles.section}>
+          <View style={styles.weekHeader}>
+            <Text style={[styles.sectionTitle, { color: colors.text.primary }]}>
+              {section.title}
             </Text>
+            <View style={styles.weekProgress}>
+              <Text
+                style={[styles.progressText, { color: colors.primary.main }]}
+              >
+                2/6 completadas
+              </Text>
+            </View>
           </View>
         </View>
+      );
+    }
 
-        <FlatList
-          data={currentWeekSessions}
-          renderItem={renderSession}
-          keyExtractor={(item) => item.id}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
-        />
+    return (
+      <View style={styles.section}>
+        <Text style={[styles.sectionTitle, { color: colors.text.primary }]}>
+          {section.title}
+        </Text>
       </View>
+    );
+  };
 
-      {/* Weekly Stats */}
+  const renderItem = ({
+    item,
+    section,
+  }: {
+    item: any;
+    section: (typeof sections)[0];
+  }) => {
+    if (section.type === "splits") {
+      return renderSplit({ item });
+    } else if (section.type === "sessions") {
+      return renderSession({ item });
+    }
+    return null;
+  };
+
+  const renderFooter = () => (
+    <View>
       <StatsCard
         stats={[
           {
@@ -337,9 +356,26 @@ export function SplitsTab({ onRoutinePress }: SplitsTabProps) {
           marginBottom: 16,
         }}
       />
-
       <View style={{ height: 20 }} />
-    </ScrollView>
+    </View>
+  );
+
+  const getItemSeparator = (section: (typeof sections)[0]) => () => {
+    return <View style={{ height: section.type === "splits" ? 12 : 8 }} />;
+  };
+
+  return (
+    <SectionList
+      style={styles.container}
+      sections={sections}
+      renderItem={renderItem}
+      renderSectionHeader={renderSectionHeader}
+      keyExtractor={(item) => item.id}
+      showsVerticalScrollIndicator={false}
+      ItemSeparatorComponent={({ section }) => getItemSeparator(section)()}
+      ListFooterComponent={renderFooter}
+      stickySectionHeadersEnabled={false}
+    />
   );
 }
 
