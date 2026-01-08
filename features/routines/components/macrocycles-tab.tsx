@@ -23,27 +23,27 @@ export function MacrocyclesTab({ onRoutinePress }: MacrocyclesTabProps) {
     onRoutinePress?.(id);
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "upcoming":
-        return "#3B82F6";
-      case "planned":
-        return "#8B5CF6";
-      default:
-        return colors.text.secondary;
-    }
-  };
+  // const getStatusColor = (status: string) => {
+  //   switch (status) {
+  //     case "upcoming":
+  //       return "#3B82F6";
+  //     case "planned":
+  //       return "#8B5CF6";
+  //     default:
+  //       return colors.text.secondary;
+  //   }
+  // };
 
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case "upcoming":
-        return "PENDIENTE";
-      case "planned":
-        return "PLANIFICADO";
-      default:
-        return "";
-    }
-  };
+  // const getStatusText = (status: string) => {
+  //   switch (status) {
+  //     case "upcoming":
+  //       return "PENDIENTE";
+  //     case "planned":
+  //       return "PLANIFICADO";
+  //     default:
+  //       return "";
+  //   }
+  // };
 
   return (
     <View

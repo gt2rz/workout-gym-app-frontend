@@ -3,7 +3,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
-import { useColorScheme } from "@/components/useColorScheme";
+import { useTheme } from "@/theme";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -14,15 +14,17 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  // const colorScheme = useColorScheme();
+
+  const { colors } = useTheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "#13ec80",
-        tabBarInactiveTintColor: "#92c9ad",
+        tabBarActiveTintColor: colors.primary.main,
+        tabBarInactiveTintColor: colors.primary.muted,
         tabBarStyle: {
-          backgroundColor: "#08150fff",
+          backgroundColor: colors.background.primary,
           borderTopWidth: 0,
           paddingTop: 8,
           paddingBottom: 24,

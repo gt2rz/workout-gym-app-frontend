@@ -5,6 +5,7 @@ export const Colors = {
     light: '#09f27eff',
     dark: '#36a16bff',
     contrast: '#ffffff',
+    muted: '#80b298',
   },
   
   // Colores secundarios (verde para registro/success)
