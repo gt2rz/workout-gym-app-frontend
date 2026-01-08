@@ -27,19 +27,27 @@ export default function HomeScreen() {
         colors={[colors.background.light, "transparent"]}
         style={styles.backgroundGradient}
       />
+      
       {/* Header */}
       <HeaderHomeSection />
+
       {/* Greeting Section */}
       <GreetingSection />
+
       {/* Weekly Calendar */}
       <WeeklyCalendarSection />
+
       {/* Hero Card: Daily Routine */}
       <HeroCardDailyRoutineSection />
+
       {/* Stats Grid */}
-      <StatsGridSection />x{/* Quick Actions */}
+      <StatsGridSection />
+      
+      {/* Quick Actions */}
       <QuickActionsSection />
       {/* Bottom spacing */}
       <View style={{ height: 100, backgroundColor: colors.background.dark }} />
+
     </ScrollView>
   );
 }
