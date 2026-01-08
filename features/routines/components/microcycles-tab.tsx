@@ -72,8 +72,8 @@ export function MicrocyclesTab({ onRoutinePress }: MicrocyclesTabProps) {
           backgroundColor: colors.surface.primary,
           borderColor: colors.border.light,
           ...(item.status === "active" && {
-            borderColor: colors.primary.main,
-            borderWidth: 2,
+            borderColor: colors.border.light,
+            borderWidth: 3,
           }),
         },
       ]}
@@ -191,7 +191,9 @@ export function MicrocyclesTab({ onRoutinePress }: MicrocyclesTabProps) {
   );
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { backgroundColor: colors.background.primary }]}
+    >
       {/* Header with current phase info */}
       <View style={styles.phaseHeader}>
         <View style={styles.phaseInfo}>
@@ -226,7 +228,14 @@ export function MicrocyclesTab({ onRoutinePress }: MicrocyclesTabProps) {
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.listContent}
-          ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
+          ItemSeparatorComponent={() => (
+            <View
+              style={{
+                height: 16,
+                backgroundColor: colors.background.transparent,
+              }}
+            />
+          )}
         />
       </View>
 
@@ -267,6 +276,7 @@ const styles = StyleSheet.create({
   },
   phaseInfo: {
     flex: 1,
+    backgroundColor: "transparent",
   },
   phaseTitle: {
     fontSize: 18,
@@ -275,6 +285,7 @@ const styles = StyleSheet.create({
   },
   phaseSubtitle: {
     fontSize: 14,
+    backgroundColor: "transparent",
   },
   phaseIcon: {
     width: 48,
@@ -286,6 +297,7 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
     paddingHorizontal: 16,
+    backgroundColor: "transparent",
   },
   sectionTitle: {
     fontSize: 20,
@@ -338,11 +350,14 @@ const styles = StyleSheet.create({
   cardBody: {
     padding: 16,
     gap: 12,
+    backgroundColor: "transparent",
   },
   microcycleHeader: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    backgroundColor: "transparent",
+
   },
   microcycleTitle: {
     fontSize: 18,
@@ -359,11 +374,15 @@ const styles = StyleSheet.create({
   },
   progressSection: {
     gap: 8,
+    backgroundColor: "transparent",
+
   },
   progressInfo: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    backgroundColor: "transparent",
+
   },
   progressLabel: {
     fontSize: 12,

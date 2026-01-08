@@ -39,7 +39,7 @@ export function StatsCard({ stats, style }: StatsCardProps) {
       <View style={styles.statsRow}>
         {stats.map((stat, index) => (
           <React.Fragment key={index}>
-            <View style={styles.statItem}>
+            <View style={[styles.statItem, { backgroundColor: "transparent" }]}>
               <Ionicons
                 name={stat.icon}
                 size={20}
@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
+    backgroundColor: "transparent",
   },
   statItem: {
     alignItems: "center",
