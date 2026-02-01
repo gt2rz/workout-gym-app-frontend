@@ -1,10 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
+import * as Device from "expo-device";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
   Alert,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -44,7 +46,7 @@ export default function LoginForm() {
     login({
       email: data.email,
       password: data.password,
-      device: "bruno",
+      device: Device.deviceName || Device.modelName || (Platform.OS === "android" ? "Android Device" : "iOS Device"),
     });
   };
 
