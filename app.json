@@ -34,7 +34,15 @@
     "plugins": [
       "expo-router",
       "expo-secure-store",
-      "@sentry/react-native"
+      "@sentry/react-native",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "workout-gym-app",
+          "organization": "gt2rz"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
