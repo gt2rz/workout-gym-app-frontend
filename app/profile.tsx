@@ -1,5 +1,4 @@
 import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
 import {
   Alert,
   Dimensions,
@@ -10,7 +9,7 @@ import {
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
-import { useAuth } from "@/context/auth";
+import { useLogout } from "@/features/auth/hooks/useLogout";
 import { useTheme } from "@/theme";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -18,7 +17,8 @@ const { width } = Dimensions.get("window");
 
 export default function ProfileScreen() {
   const { colors } = useTheme();
-  const { signOut } = useAuth();
+  // Usamos el hook de logout refactorizado
+  const { logout } = useLogout();
 
   const handleLogout = () => {
     Alert.alert(
@@ -34,8 +34,9 @@ export default function ProfileScreen() {
           style: "destructive",
           onPress: async () => {
             try {
-              await signOut();
-              router.replace("/(auth)/login");
+              await logout();
+              // La navegación ya la maneja el hook, pero por seguridad:
+              // router.replace("/(auth)/login");
             } catch (error) {
               Alert.alert("Error", "No se pudo cerrar la sesión");
             }

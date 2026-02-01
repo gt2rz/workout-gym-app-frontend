@@ -13,6 +13,7 @@ import {
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
+import { useRegister } from "@/features/auth/hooks/useRegister";
 import { useTheme } from "@/theme";
 import { Stack } from "expo-router";
 
@@ -27,7 +28,9 @@ export default function RegisterScreen() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
+  // Usamos el hook de registro
+  const { mutate: register, isPending: isLoading } = useRegister();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -64,24 +67,11 @@ export default function RegisterScreen() {
   const handleRegister = async () => {
     if (!validateForm()) return;
 
-    setIsLoading(true);
-
-    try {
-      // Aquí iría la lógica de registro
-      // Por ahora simulamos un registro exitoso
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      Alert.alert("Registro Exitoso", "¡Cuenta creada correctamente!", [
-        {
-          text: "OK",
-          onPress: () => router.replace("/(auth)/login"),
-        },
-      ]);
-    } catch (error) {
-      Alert.alert("Error", "No se pudo crear la cuenta");
-    } finally {
-      setIsLoading(false);
-    }
+    register({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+    });
   };
 
   const navigateToLogin = () => {
@@ -116,22 +106,22 @@ export default function RegisterScreen() {
             <TouchableOpacity
               style={[
                 styles.backButton,
-                { backgroundColor: colors.surface + "80" },
+                { backgroundColor: colors.surface.primary + "80" },
               ]}
               onPress={() => router.back()}
             >
-              <Ionicons name="arrow-back-ios" size={20} color="white" />
+              <Ionicons name="arrow-back" size={20} color="white" />
             </TouchableOpacity>
           ),
         }}
       />
 
-      <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <View style={[styles.container, { backgroundColor: colors.background.primary }]}>
         {/* Background Decorative Element */}
         <View
           style={[
             styles.backgroundDecoration,
-            { backgroundColor: colors.primary + "10" },
+            { backgroundColor: colors.primary.main + "10" },
           ]}
         />
 
@@ -151,19 +141,19 @@ export default function RegisterScreen() {
                 style={[
                   styles.logoContainer,
                   {
-                    backgroundColor: colors.surface,
-                    borderColor: colors.primary + "20",
+                    backgroundColor: colors.surface.primary,
+                    borderColor: colors.primary.main + "20",
                   },
                 ]}
               >
-                <Ionicons name="barbell" size={32} color={colors.primary} />
+                <Ionicons name="barbell" size={32} color={colors.primary.main} />
               </View>
 
-              <Text style={[styles.title, { color: colors.text }]}>
+              <Text style={[styles.title, { color: colors.text.primary }]}>
                 Empieza tu {"\n"}
-                <Text style={{ color: colors.primary }}>Transformación</Text>
+                <Text style={{ color: colors.primary.main }}>Transformación</Text>
               </Text>
-              <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
+              <Text style={[styles.subtitle, { color: colors.text.secondary }]}>
                 Registra entrenamientos, monitorea tu peso y rompe tus metas.
               </Text>
             </View>
@@ -172,7 +162,7 @@ export default function RegisterScreen() {
             <View style={styles.formSection}>
               {/* Full Name Field */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: colors.text }]}>
+                <Text style={[styles.inputLabel, { color: colors.text.primary }]}>
                   Nombre Completo
                 </Text>
                 <View style={styles.inputContainer}>
@@ -180,13 +170,13 @@ export default function RegisterScreen() {
                     style={[
                       styles.textInput,
                       {
-                        backgroundColor: colors.surface,
-                        borderColor: colors.border,
-                        color: colors.text,
+                        backgroundColor: colors.surface.primary,
+                        borderColor: colors.border.light,
+                        color: colors.text.primary,
                       },
                     ]}
                     placeholder="Juan Pérez"
-                    placeholderTextColor={colors.textSecondary + "80"}
+                    placeholderTextColor={colors.text.muted + "80"}
                     value={formData.name}
                     onChangeText={(text) => handleInputChange("name", text)}
                     autoCapitalize="words"
@@ -196,7 +186,7 @@ export default function RegisterScreen() {
                     <Ionicons
                       name="person-outline"
                       size={20}
-                      color={colors.textSecondary}
+                      color={colors.text.secondary}
                     />
                   </View>
                 </View>
@@ -204,7 +194,7 @@ export default function RegisterScreen() {
 
               {/* Email Field */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: colors.text }]}>
+                <Text style={[styles.inputLabel, { color: colors.text.primary }]}>
                   Correo Electrónico
                 </Text>
                 <View style={styles.inputContainer}>
@@ -212,13 +202,13 @@ export default function RegisterScreen() {
                     style={[
                       styles.textInput,
                       {
-                        backgroundColor: colors.surface,
-                        borderColor: colors.border,
-                        color: colors.text,
+                        backgroundColor: colors.surface.primary,
+                        borderColor: colors.border.light,
+                        color: colors.text.primary,
                       },
                     ]}
                     placeholder="gymrat@ejemplo.com"
-                    placeholderTextColor={colors.textSecondary + "80"}
+                    placeholderTextColor={colors.text.muted + "80"}
                     value={formData.email}
                     onChangeText={(text) => handleInputChange("email", text)}
                     keyboardType="email-address"
@@ -229,7 +219,7 @@ export default function RegisterScreen() {
                     <Ionicons
                       name="mail-outline"
                       size={20}
-                      color={colors.textSecondary}
+                      color={colors.text.secondary}
                     />
                   </View>
                 </View>
@@ -237,7 +227,7 @@ export default function RegisterScreen() {
 
               {/* Password Field */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: colors.text }]}>
+                <Text style={[styles.inputLabel, { color: colors.text.primary }]}>
                   Contraseña
                 </Text>
                 <View style={styles.inputContainer}>
@@ -245,13 +235,13 @@ export default function RegisterScreen() {
                     style={[
                       styles.textInput,
                       {
-                        backgroundColor: colors.surface,
-                        borderColor: colors.border,
-                        color: colors.text,
+                        backgroundColor: colors.surface.primary,
+                        borderColor: colors.border.light,
+                        color: colors.text.primary,
                       },
                     ]}
                     placeholder="••••••••"
-                    placeholderTextColor={colors.textSecondary + "80"}
+                    placeholderTextColor={colors.text.muted + "80"}
                     value={formData.password}
                     onChangeText={(text) => handleInputChange("password", text)}
                     secureTextEntry={!showPassword}
@@ -265,7 +255,7 @@ export default function RegisterScreen() {
                     <Ionicons
                       name={showPassword ? "eye-outline" : "eye-off-outline"}
                       size={20}
-                      color={colors.textSecondary}
+                      color={colors.text.secondary}
                     />
                   </TouchableOpacity>
                 </View>
@@ -276,7 +266,7 @@ export default function RegisterScreen() {
                 <TouchableOpacity
                   style={[
                     styles.checkbox,
-                    acceptTerms && { backgroundColor: colors.primary },
+                    acceptTerms && { backgroundColor: colors.primary.main },
                   ]}
                   onPress={() => setAcceptTerms(!acceptTerms)}
                 >
@@ -284,22 +274,22 @@ export default function RegisterScreen() {
                     <Ionicons
                       name="checkmark"
                       size={12}
-                      color={colors.background}
+                      color={colors.background.primary}
                     />
                   )}
                 </TouchableOpacity>
                 <Text
-                  style={[styles.termsText, { color: colors.textSecondary }]}
+                  style={[styles.termsText, { color: colors.text.secondary }]}
                 >
                   Acepto los{" "}
                   <TouchableOpacity onPress={() => handleTermsPress("terms")}>
-                    <Text style={[styles.termsLink, { color: colors.primary }]}>
+                    <Text style={[styles.termsLink, { color: colors.primary.main }]}>
                       Términos
                     </Text>
                   </TouchableOpacity>{" "}
                   y la{" "}
                   <TouchableOpacity onPress={() => handleTermsPress("privacy")}>
-                    <Text style={[styles.termsLink, { color: colors.primary }]}>
+                    <Text style={[styles.termsLink, { color: colors.primary.main }]}>
                       Política de Privacidad
                     </Text>
                   </TouchableOpacity>
@@ -311,7 +301,7 @@ export default function RegisterScreen() {
               <TouchableOpacity
                 style={[
                   styles.submitButton,
-                  { backgroundColor: colors.primary },
+                  { backgroundColor: colors.primary.main },
                   isLoading && styles.submitButtonDisabled,
                 ]}
                 onPress={handleRegister}
@@ -320,7 +310,7 @@ export default function RegisterScreen() {
                 <Text
                   style={[
                     styles.submitButtonText,
-                    { color: colors.background },
+                    { color: colors.background.primary },
                   ]}
                 >
                   {isLoading ? "Creando cuenta..." : "Crear Cuenta"}
@@ -328,7 +318,7 @@ export default function RegisterScreen() {
                 <Ionicons
                   name="arrow-forward"
                   size={20}
-                  color={colors.background}
+                  color={colors.background.primary}
                 />
               </TouchableOpacity>
             </View>
@@ -339,15 +329,15 @@ export default function RegisterScreen() {
                 <View
                   style={[
                     styles.dividerLine,
-                    { backgroundColor: colors.border },
+                    { backgroundColor: colors.border.light },
                   ]}
                 />
                 <Text
                   style={[
                     styles.dividerText,
                     {
-                      color: colors.textSecondary,
-                      backgroundColor: colors.background,
+                      color: colors.text.secondary,
+                      backgroundColor: colors.background.primary,
                     },
                   ]}
                 >
@@ -356,7 +346,7 @@ export default function RegisterScreen() {
                 <View
                   style={[
                     styles.dividerLine,
-                    { backgroundColor: colors.border },
+                    { backgroundColor: colors.border.light },
                   ]}
                 />
               </View>
@@ -382,10 +372,10 @@ export default function RegisterScreen() {
 
             {/* Footer Section */}
             <View style={styles.footerSection}>
-              <Text style={[styles.loginText, { color: colors.textSecondary }]}>
+              <Text style={[styles.loginText, { color: colors.text.secondary }]}>
                 ¿Ya tienes una cuenta?{" "}
                 <TouchableOpacity onPress={navigateToLogin}>
-                  <Text style={[styles.loginLink, { color: colors.primary }]}>
+                  <Text style={[styles.loginLink, { color: colors.primary.main }]}>
                     Inicia Sesión
                   </Text>
                 </TouchableOpacity>

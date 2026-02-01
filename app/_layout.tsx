@@ -10,12 +10,14 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
+import { queryClient } from "@/api/query-client";
 import { useColorScheme } from "@/components/useColorScheme";
 import { AuthProvider, useAuth } from "@/context/auth";
+import { QueryClientProvider } from "@tanstack/react-query";
 
 export {
   // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
+  ErrorBoundary
 } from "expo-router";
 
 export const unstable_settings = {
@@ -48,9 +50,11 @@ export default function RootLayout() {
   }
 
   return (
-    <AuthProvider>
-      <RootLayoutNav />
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RootLayoutNav />
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
 

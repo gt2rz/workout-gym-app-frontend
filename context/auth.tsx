@@ -2,15 +2,17 @@ import * as SecureStore from "expo-secure-store";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface User {
-  name: string;
+  id: string | number;
   email: string;
+  name?: string;
+  [key: string]: any;
 }
 
 interface AuthContextType {
   user: User | null;
   token: string | null;
   isLoading: boolean;
-  signIn: () => Promise<void>;
+  signIn: (token: string, user: User) => Promise<void>;
   signOut: () => Promise<void>;
 }
 
@@ -27,24 +29,37 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
     // Cargar token guardado al iniciar la app
-    SecureStore.getItemAsync("userToken").then((value) => {
-      if (value) {
-        setToken(value);
-        setUser({ name: "Usuario de Prueba", email: "test@example.com" }); // Datos mock
+    const loadAuth = async () => {
+      const persistedToken = await SecureStore.getItemAsync("userToken");
+      const persistedUser = await SecureStore.getItemAsync("userInfo");
+
+      if (persistedToken) {
+        setToken(persistedToken);
+        if (persistedUser) {
+          try {
+            setUser(JSON.parse(persistedUser));
+          } catch (e) {
+            console.error("Error parsing user info", e);
+          }
+        }
       }
       setIsLoading(false);
-    });
+    };
+
+    loadAuth();
   }, []);
 
-  const signIn = async () => {
-    const mockToken = "12345abcde";
-    await SecureStore.setItemAsync("userToken", mockToken);
-    setToken(mockToken);
-    setUser({ name: "Usuario de Prueba", email: "test@example.com" });
+  const signIn = async (newToken: string, newUser: User) => {
+    await SecureStore.setItemAsync("userToken", newToken);
+    // Opcional: Guardar usuario en SecureStore o AsyncStorage si quieres persistencia offline de datos básicos
+    await SecureStore.setItemAsync("userInfo", JSON.stringify(newUser));
+    setToken(newToken);
+    setUser(newUser);
   };
 
   const signOut = async () => {
     await SecureStore.deleteItemAsync("userToken");
+    await SecureStore.deleteItemAsync("userInfo");
     setToken(null);
     setUser(null);
   };
