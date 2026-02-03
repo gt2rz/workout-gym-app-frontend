@@ -1,12 +1,12 @@
 import { Dimensions, ScrollView, StyleSheet } from "react-native";
 
 import { View } from "@/components/Themed";
-import GreetingSection from "@/features/home/greeting-section";
-import HeaderHomeSection from "@/features/home/header-home-section";
-import HeroCardDailyRoutineSection from "@/features/home/hero-card-daily-routine-section";
-import QuickActionsSection from "@/features/home/quick-actions-section";
-import StatsGridSection from "@/features/home/stats-grid-section";
-import WeeklyCalendarSection from "@/features/home/weekly-calendar-section";
+import GreetingSection from "@/features/home/components/greeting-section";
+import HeaderHomeSection from "@/features/home/components/header-home-section";
+import HeroCardDailyRoutineSection from "@/features/home/components/hero-card-daily-routine-section";
+import QuickActionsSection from "@/features/home/components/quick-actions-section";
+import StatsGridSection from "@/features/home/components/stats-grid-section";
+import WeeklyCalendarSection from "@/features/home/components/weekly-calendar-section";
 import { useHomeData } from "@/hooks/useHomeData";
 import { useTheme } from "@/theme";
 import { LinearGradient } from "expo-linear-gradient";
@@ -27,7 +27,7 @@ export default function HomeScreen() {
         colors={[colors.background.light, "transparent"]}
         style={styles.backgroundGradient}
       />
-      
+
       {/* Header */}
       <HeaderHomeSection />
 
@@ -42,7 +42,7 @@ export default function HomeScreen() {
 
       {/* Stats Grid */}
       <StatsGridSection />
-      
+
       {/* Quick Actions */}
       <QuickActionsSection />
       {/* Bottom spacing */}
