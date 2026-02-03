@@ -1,10 +1,10 @@
-import client from "./client";
+import client from "@/core/api/client";
 
 export interface LoginPayload {
     email: string;
     password?: string;
     device?: string;
-    [key: string]: any; // Flexibilidad
+    [key: string]: any;
 }
 
 export interface User {
@@ -25,10 +25,12 @@ export interface LoginResponse {
 }
 
 /**
- * Inicia sesión en la aplicación.
- * @param payload Datos de login (email, password, device)
+ * Servicios de API específicos para la funcionalidad de Autenticación.
+ * Ubicado dentro de la feature 'auth' para mantener el encapsulamiento.
  */
 export const login = async (payload: LoginPayload): Promise<LoginResponse> => {
     const { data } = await client.post<LoginResponse>("/api/v1/auth/login", payload);
     return data;
 };
+
+// Aquí podrías agregar register, forgotPassword, etc.

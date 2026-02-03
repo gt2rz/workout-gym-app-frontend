@@ -11,9 +11,9 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
-import { queryClient } from "@/api/query-client";
 import { useColorScheme } from "@/components/useColorScheme";
 import { AuthProvider, useAuth } from "@/context/auth";
+import { queryClient } from "@/core/api/query-client";
 import { QueryClientProvider } from "@tanstack/react-query";
 
 export {

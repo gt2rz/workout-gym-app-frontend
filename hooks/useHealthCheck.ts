@@ -1,4 +1,4 @@
-import { fetchHealth } from "@/api/health";
+import { fetchHealth } from "@/core/services/health.service";
 import { useQuery } from "@tanstack/react-query";
 
 /**

@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/react-native";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { Alert } from "react-native";
@@ -30,6 +31,9 @@ export const useRegister = () => {
             ]);
         },
         onError: (error) => {
+            Sentry.captureException(error, {
+                tags: { section: "register" },
+            });
             Alert.alert("Error", "No se pudo crear la cuenta. Intenta nuevamente.");
         },
     });

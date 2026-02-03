@@ -1,6 +1,10 @@
 import { API_URL } from "@/constants/env";
 import axios from "axios";
 
+/**
+ * Cliente base de Axios configurado para toda la aplicación.
+ * Ubicado en Core porque es una infraestructura compartida por todas las features.
+ */
 const client = axios.create({
     baseURL: API_URL,
     headers: {
@@ -9,19 +13,16 @@ const client = axios.create({
     },
 });
 
-// Interceptor para logs en desarrollo (ayuda a ver qué URL se está llamando)
+// Interceptor para logs en desarrollo
 client.interceptors.request.use((config) => {
     if (__DEV__) {
-        // Loguear la URL completa para evitar confusiones
         console.log(`[API Request] ${config.method?.toUpperCase()} ${config.baseURL}${config.url}`);
     }
     return config;
 });
 
 client.interceptors.response.use(
-    (response) => {
-        return response;
-    },
+    (response) => response,
     (error) => {
         if (__DEV__) {
             const url = error.config ? `${error.config.baseURL}${error.config.url}` : "Unknown URL";
