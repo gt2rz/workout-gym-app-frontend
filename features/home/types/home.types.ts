@@ -14,7 +14,10 @@ export interface HomeDataType {
 export interface GreetingType {
     enabled: boolean
     today: string
-    greeting_message: string
+    greeting: {
+        message: string
+        user_name: string
+    }
 }
 
 export interface WeeklyOverviewType {

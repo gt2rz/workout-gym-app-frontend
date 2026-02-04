@@ -10,6 +10,21 @@ const GreetingSection = () => {
 
   if (!homeData?.greeting.enabled) return null;
 
+  const renderGreetingMessage = () => {
+    const { message, user_name } = homeData.greeting.greeting;
+    const parts = message.split("{{user_name}}");
+
+    return (
+      <Text style={[styles.greetingText, { color: colors.text.light }]}>
+        {parts[0]}
+        {parts.length > 1 && (
+          <Text style={styles.greetingBoldText}>{user_name}</Text>
+        )}
+        {parts[1]}
+      </Text>
+    );
+  };
+
   return (
     <View
       style={[
@@ -20,9 +35,7 @@ const GreetingSection = () => {
       <Text style={[styles.dateText, { color: "#92c9ad" }]}>
         {homeData.greeting.today.toUpperCase()}
       </Text>
-      <Text style={[styles.greetingText, { color: colors.text.light }]}>
-        {homeData.greeting.greeting_message}
-      </Text>
+      {renderGreetingMessage()}
     </View>
   );
 };
@@ -39,7 +52,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   greetingText: {
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: "light",
     marginTop: 4,
   },
