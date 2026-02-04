@@ -50,7 +50,7 @@ const WeeklyCalendarSection = () => {
             ]}
           >
             <Text style={[styles.dayName, { color: "#92c9ad" }]}>
-              {day.label}
+              {day.day}
             </Text>
             <View
               style={[
@@ -65,7 +65,7 @@ const WeeklyCalendarSection = () => {
                   day.is_today && styles.activeDayNumber,
                 ]}
               >
-                {day.day}
+                {day.label}
               </Text>
             </View>
           </View>
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
   dayItem: {
     alignItems: "center",
     marginHorizontal: 8,
+    paddingVertical: 12,
   },
   dayName: {
     fontSize: 12,
@@ -110,9 +111,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   dayCircle: {
-    width: 40,
+    width: 60,
     height: 40,
-    borderRadius: 20,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -121,16 +122,18 @@ const styles = StyleSheet.create({
     shadowColor: "#13ec80",
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.4,
-    shadowRadius: 12,
-    elevation: 8,
+    shadowRadius: 6,
+    elevation: 6,
   },
   dayNumber: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "500",
     color: "#ffffff",
   },
   activeDayNumber: {
     color: "#11221a",
+    fontWeight: "900",
+    fontSize: 18,
   },
 });
 
