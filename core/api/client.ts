@@ -1,10 +1,7 @@
 import { API_URL } from "@/constants/env";
 import axios from "axios";
+import * as SecureStore from "expo-secure-store";
 
-/**
- * Cliente base de Axios configurado para toda la aplicación.
- * Ubicado en Core porque es una infraestructura compartida por todas las features.
- */
 const client = axios.create({
     baseURL: API_URL,
     headers: {
@@ -13,8 +10,17 @@ const client = axios.create({
     },
 });
 
-// Interceptor para logs en desarrollo
-client.interceptors.request.use((config) => {
+// Interceptor para inyectar el token de autenticación automáticamente
+client.interceptors.request.use(async (config) => {
+    try {
+        const token = await SecureStore.getItemAsync("userToken");
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+    } catch (error) {
+        console.error("Error al obtener el token del SecureStore", error);
+    }
+
     if (__DEV__) {
         console.log(`[API Request] ${config.method?.toUpperCase()} ${config.baseURL}${config.url}`);
     }

@@ -1,12 +1,16 @@
 import { View } from "@/components/Themed";
-import { useHomeData } from "@/hooks/useHomeData";
 import { useTheme } from "@/theme";
 import React from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useHome } from "../hooks/useHome";
 
 const WeeklyCalendarSection = () => {
   const { colors } = useTheme();
-  const { getCurrentDate, weekDays } = useHomeData();
+  const { homeData } = useHome();
+
+  if (!homeData?.weekly_overview.enabled) return null;
+
+  const { title, all_label, week_days } = homeData.weekly_overview;
 
   return (
     <View
@@ -22,11 +26,11 @@ const WeeklyCalendarSection = () => {
         ]}
       >
         <Text style={[styles.sectionTitle, { color: colors.text.light }]}>
-          Tu Semana
+          {title}
         </Text>
         <TouchableOpacity>
           <Text style={[styles.viewAllButton, { color: "#13ec80" }]}>
-            Ver Todo
+            {all_label}
           </Text>
         </TouchableOpacity>
       </View>
@@ -37,7 +41,7 @@ const WeeklyCalendarSection = () => {
         style={styles.weeklyCalendar}
         contentContainerStyle={styles.weeklyCalendarContent}
       >
-        {weekDays.map((day, index) => (
+        {week_days.map((day, index) => (
           <View
             key={index}
             style={[
@@ -46,19 +50,19 @@ const WeeklyCalendarSection = () => {
             ]}
           >
             <Text style={[styles.dayName, { color: "#92c9ad" }]}>
-              {day.name}
+              {day.label}
             </Text>
             <View
               style={[
                 styles.dayCircle,
-                day.isActive && styles.activeDayCircle,
-                !day.isActive && { backgroundColor: "#193326" },
+                day.is_today && styles.activeDayCircle,
+                !day.is_today && { backgroundColor: "#193326" },
               ]}
             >
               <Text
                 style={[
                   styles.dayNumber,
-                  day.isActive && styles.activeDayNumber,
+                  day.is_today && styles.activeDayNumber,
                 ]}
               >
                 {day.day}

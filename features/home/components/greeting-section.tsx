@@ -1,12 +1,14 @@
 import { View } from "@/components/Themed";
-import { useHomeData } from "@/hooks/useHomeData";
 import { useTheme } from "@/theme";
 import React from "react";
 import { StyleSheet, Text } from "react-native";
+import { useHome } from "../hooks/useHome";
 
 const GreetingSection = () => {
   const { colors } = useTheme();
-  const { getCurrentDate, weekDays } = useHomeData();
+  const { homeData } = useHome();
+
+  if (!homeData?.greeting.enabled) return null;
 
   return (
     <View
@@ -16,14 +18,10 @@ const GreetingSection = () => {
       ]}
     >
       <Text style={[styles.dateText, { color: "#92c9ad" }]}>
-        {getCurrentDate().toUpperCase()}
+        {homeData.greeting.today.toUpperCase()}
       </Text>
       <Text style={[styles.greetingText, { color: colors.text.light }]}>
-        Hola,{" "}
-        <Text style={[styles.greetingBoldText, { color: colors.text.light }]}>
-          Miguel
-        </Text>{" "}
-        👋
+        {homeData.greeting.greeting_message}
       </Text>
     </View>
   );

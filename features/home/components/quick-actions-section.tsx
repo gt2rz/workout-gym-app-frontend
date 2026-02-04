@@ -3,9 +3,24 @@ import { useTheme } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { useHome } from "../hooks/useHome";
+
+const getIconName = (apiName: string): any => {
+  const map: Record<string, string> = {
+    playlist_add: "add-circle-outline",
+    history: "time-outline",
+    // Agrega más mapeos
+  };
+  return map[apiName] || apiName;
+};
 
 const QuickActionsSection = () => {
   const { colors } = useTheme();
+  const { homeData } = useHome();
+
+  if (!homeData?.quick_access.enabled) return null;
+
+  const { title, options } = homeData.quick_access;
 
   return (
     <View
@@ -15,60 +30,31 @@ const QuickActionsSection = () => {
       ]}
     >
       <Text style={[styles.sectionTitle, { color: colors.text.light }]}>
-        Accesos Rápidos
+        {title}
       </Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.quickActionsContent}
       >
-        <TouchableOpacity
-          style={[styles.quickActionButton, { backgroundColor: "#193326" }]}
-        >
-          <View
-            style={[
-              styles.quickActionIcon,
-              { backgroundColor: "rgba(59, 130, 246, 0.2)" },
-            ]}
+        {options.map((option) => (
+          <TouchableOpacity
+            key={option.id}
+            style={[styles.quickActionButton, { backgroundColor: "#193326" }]}
           >
-            <Ionicons name="add" size={20} color="#3b82f6" />
-          </View>
-          <Text style={[styles.quickActionText, { color: colors.text.light }]}>
-            Registrar Peso
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={[styles.quickActionButton, { backgroundColor: "#193326" }]}
-        >
-          <View
-            style={[
-              styles.quickActionIcon,
-              { backgroundColor: "rgba(147, 51, 234, 0.2)" },
-            ]}
-          >
-            <Ionicons name="calendar-outline" size={20} color="#9333ea" />
-          </View>
-          <Text style={[styles.quickActionText, { color: colors.text.light }]}>
-            Crear Rutina
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={[styles.quickActionButton, { backgroundColor: "#193326" }]}
-        >
-          <View
-            style={[
-              styles.quickActionIcon,
-              { backgroundColor: "rgba(249, 115, 22, 0.2)" },
-            ]}
-          >
-            <Ionicons name="time-outline" size={20} color="#f97316" />
-          </View>
-          <Text style={[styles.quickActionText, { color: colors.text.light }]}>
-            Historial
-          </Text>
-        </TouchableOpacity>
+            <View
+              style={[
+                styles.quickActionIcon,
+                { backgroundColor: `${option.icon_color}33` }, // Opacidad del 20%
+              ]}
+            >
+              <Ionicons name={getIconName(option.icon_name)} size={20} color={option.icon_color} />
+            </View>
+            <Text style={[styles.quickActionText, { color: colors.text.light }]}>
+              {option.label}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </View>
   );

@@ -4,9 +4,61 @@ import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useHome } from "../hooks/useHome";
 
 const HeroCardDailyRoutineSection = () => {
   const { colors } = useTheme();
+  const { homeData } = useHome();
+
+  if (!homeData?.workout_today.enabled) return null;
+
+  const { has_workout, workout, no_workout } = homeData.workout_today;
+
+  // Si no hay entrenamiento hoy, mostramos el estado de descanso
+  if (!has_workout) {
+    return (
+      <View
+        style={[
+          styles.heroCardContainer,
+          { backgroundColor: colors.background.transparent },
+        ]}
+      >
+        <TouchableOpacity
+          style={[styles.heroCard, { backgroundColor: "transparent" }]}
+        >
+          <LinearGradient
+            colors={["#1acf9c8c", "#133e259c", "#083d1ef7"]}
+            locations={[0, 0.4, 1]}
+            style={styles.backgroundGradient}
+          />
+          <Image
+            source={{ uri: no_workout.image_url }}
+            style={styles.heroCardImage}
+            resizeMode="cover"
+          />
+          <View style={styles.heroCardContent}>
+            <View style={styles.routineTypeTag}>
+              <Ionicons
+                name="cafe-outline"
+                size={14}
+                color="#13ec80"
+                style={{ marginRight: 4 }}
+              />
+              <Text style={[styles.routineTypeText, { color: "#13ec80" }]}>
+                Día de Descanso
+              </Text>
+            </View>
+            <Text style={[styles.heroTitle, { color: colors.text.light }]}>
+              {no_workout.title}
+            </Text>
+            <Text style={[styles.heroSubtitle, { color: "#92c9ad" }]}>
+              {no_workout.subtitle}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   return (
     <View
@@ -24,9 +76,7 @@ const HeroCardDailyRoutineSection = () => {
           style={styles.backgroundGradient}
         />
         <Image
-          source={{
-            uri: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-          }}
+          source={{ uri: workout.image_url }}
           style={styles.heroCardImage}
           resizeMode="cover"
         />
@@ -39,14 +89,14 @@ const HeroCardDailyRoutineSection = () => {
               style={{ marginRight: 4 }}
             />
             <Text style={[styles.routineTypeText, { color: "#13ec80" }]}>
-              Día de Empuje
+              {workout.type}
             </Text>
           </View>
           <Text style={[styles.heroTitle, { color: colors.text.light }]}>
-            Rutina de Pecho y Tríceps
+            {workout.title}
           </Text>
           <Text style={[styles.heroSubtitle, { color: "#92c9ad" }]}>
-            Enfócate en la técnica. ¡Tú puedes!
+            {workout.subtitle}
           </Text>
           <View
             style={[
@@ -58,13 +108,13 @@ const HeroCardDailyRoutineSection = () => {
               <View style={styles.routineDetailItem}>
                 <Ionicons name="time-outline" size={16} color="#92c9ad" />
                 <Text style={[styles.routineDetailText, { color: "#92c9ad" }]}>
-                  45 Minutos
+                  {workout.duration_minutes}
                 </Text>
               </View>
               <View style={styles.routineDetailItem}>
                 <Ionicons name="list-outline" size={16} color="#92c9ad" />
                 <Text style={[styles.routineDetailText, { color: "#92c9ad" }]}>
-                  6 Ejercicios
+                  {workout.exercises_count}
                 </Text>
               </View>
             </View>

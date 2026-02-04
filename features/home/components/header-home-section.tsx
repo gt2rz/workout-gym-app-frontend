@@ -4,10 +4,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useHome } from "../hooks/useHome";
 
 const HeaderHomeSection = () => {
   const { colors } = useTheme();
   const router = useRouter();
+  const { homeData } = useHome();
 
   const handleProfilePress = () => {
     router.push("/profile");
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 12,
-    paddingTop: 50, // Account for status bar
+    paddingTop: 8, // Account for status bar
   },
   userInfo: {
     flexDirection: "row",

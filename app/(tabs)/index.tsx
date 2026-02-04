@@ -10,7 +10,20 @@ import QuickActionsSection from "@/features/home/components/quick-actions-sectio
 import StatsGridSection from "@/features/home/components/stats-grid-section";
 import WeeklyCalendarSection from "@/features/home/components/weekly-calendar-section";
 
+import { useHome } from "@/features/home/hooks/useHome";
+import { ActivityIndicator } from "react-native";
+
 export default function HomeScreen() {
+  const { isLoading } = useHome();
+
+  if (isLoading) {
+    return (
+      <ScreenWrapper withScroll={false} style={styles.center}>
+        <ActivityIndicator size="large" color="#13ec80" />
+      </ScreenWrapper>
+    );
+  }
+
   return (
     <ScreenWrapper style={styles.container}>
       {/* Header */}
@@ -39,7 +52,12 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    // Aquí puedes añadir estilos específicos para el contenido de esta pantalla
+    // Especial para el contenido
+  },
+  center: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   bottomSpacer: {
     height: 100,
