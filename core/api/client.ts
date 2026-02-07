@@ -1,4 +1,4 @@
-import { API_URL } from "@/constants/env";
+import { API_KEY, API_URL } from "@/constants/env";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 
@@ -6,7 +6,7 @@ const client = axios.create({
     baseURL: API_URL,
     headers: {
         "Content-Type": "application/json",
-        "X-API-KEY": "default_api_key_value",
+        "X-API-KEY": API_KEY,
     },
 });
 

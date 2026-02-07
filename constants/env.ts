@@ -24,3 +24,4 @@ const getApiUrl = () => {
 };
 
 export const API_URL = getApiUrl();
+export const API_KEY = process.env.EXPO_PUBLIC_API_KEY || "default_api_key_value";
