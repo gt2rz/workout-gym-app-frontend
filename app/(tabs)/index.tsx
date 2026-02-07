@@ -14,7 +14,7 @@ import { useHome } from "@/features/home/hooks/useHome";
 import { ActivityIndicator } from "react-native";
 
 export default function HomeScreen() {
-  const { isLoading } = useHome();
+  const { isLoading, refetch, isRefetching } = useHome();
 
   if (isLoading) {
     return (
@@ -25,7 +25,11 @@ export default function HomeScreen() {
   }
 
   return (
-    <ScreenWrapper style={styles.container}>
+    <ScreenWrapper
+      style={styles.container}
+      onRefresh={refetch}
+      refreshing={isRefetching}
+    >
       {/* Header */}
       <HeaderHomeSection />
 

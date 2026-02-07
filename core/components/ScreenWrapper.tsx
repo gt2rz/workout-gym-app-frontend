@@ -1,13 +1,15 @@
 import { useTheme } from "@/theme";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { ScrollView, StyleSheet, View, ViewStyle } from "react-native";
+import { RefreshControl, ScrollView, StyleSheet, View, ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface ScreenWrapperProps {
     children: React.ReactNode;
     style?: ViewStyle;
     withScroll?: boolean;
+    onRefresh?: () => void;
+    refreshing?: boolean;
 }
 
 /**
@@ -17,7 +19,9 @@ interface ScreenWrapperProps {
 export const ScreenWrapper = ({
     children,
     style,
-    withScroll = true
+    withScroll = true,
+    onRefresh,
+    refreshing = false,
 }: ScreenWrapperProps) => {
     const { colors } = useTheme();
     const insets = useSafeAreaInsets();
@@ -34,6 +38,16 @@ export const ScreenWrapper = ({
             <Content
                 style={[styles.content, { paddingTop: insets.top }, style]}
                 showsVerticalScrollIndicator={false}
+                refreshControl={
+                    withScroll && onRefresh ? (
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
+                            tintColor={colors.primary.main}
+                            colors={[colors.primary.main]}
+                        />
+                    ) : undefined
+                }
             >
                 {children}
             </Content>
