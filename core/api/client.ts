@@ -33,6 +33,9 @@ client.interceptors.response.use(
         if (__DEV__) {
             const url = error.config ? `${error.config.baseURL}${error.config.url}` : "Unknown URL";
             console.error(`[API Error] ${error.message} at ${url}`);
+            if (error.response?.data) {
+                console.error("[API Error Data]", JSON.stringify(error.response.data, null, 2));
+            }
         }
         return Promise.reject(error);
     }

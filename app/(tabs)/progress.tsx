@@ -1,7 +1,31 @@
+import { Text, View } from "@/components/Themed";
+import { ScreenWrapper } from "@/core/components/ScreenWrapper";
 import React from "react";
+import { StyleSheet } from "react-native";
 
-const progress = () => {
-  return <div>progress</div>;
+const ProgressScreen = () => {
+  return (
+    <ScreenWrapper style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.title}>Progreso</Text>
+        <Text>Contenido próximamente...</Text>
+      </View>
+    </ScreenWrapper>
+  );
 };
 
-export default progress;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  content: {
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+});
+
+export default ProgressScreen;
