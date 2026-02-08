@@ -1,7 +1,7 @@
+import { queryClient } from "@/core/api/query-client";
+import { User } from "@/features/auth/services/auth.types";
 import * as SecureStore from "expo-secure-store";
 import React, { createContext, useContext, useEffect, useState } from "react";
-
-import { User } from "@/features/auth/services/auth.types";
 
 interface AuthContextType {
   user: User | null;
@@ -17,6 +17,15 @@ interface AuthProviderProps {
   children: React.ReactNode;
 }
 
+// Global logout function to be used outside of React components (e.g., API interceptors)
+let globalSignOut: (() => Promise<void>) | null = null;
+
+export const logout = async () => {
+  if (globalSignOut) {
+    await globalSignOut();
+  }
+};
+
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
@@ -25,20 +34,25 @@ export function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     // Cargar token guardado al iniciar la app
     const loadAuth = async () => {
-      const persistedToken = await SecureStore.getItemAsync("userToken");
-      const persistedUser = await SecureStore.getItemAsync("userInfo");
+      try {
+        const persistedToken = await SecureStore.getItemAsync("userToken");
+        const persistedUser = await SecureStore.getItemAsync("userInfo");
 
-      if (persistedToken) {
-        setToken(persistedToken);
-        if (persistedUser) {
-          try {
-            setUser(JSON.parse(persistedUser));
-          } catch (e) {
-            console.error("Error parsing user info", e);
+        if (persistedToken) {
+          setToken(persistedToken);
+          if (persistedUser) {
+            try {
+              setUser(JSON.parse(persistedUser));
+            } catch (e) {
+              console.error("Error parsing user info", e);
+            }
           }
         }
+      } catch (e) {
+        console.error("Error loading auth state", e);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
 
     loadAuth();
@@ -46,7 +60,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const signIn = async (newToken: string, newUser: User) => {
     await SecureStore.setItemAsync("userToken", newToken);
-    // Opcional: Guardar usuario en SecureStore o AsyncStorage si quieres persistencia offline de datos básicos
     await SecureStore.setItemAsync("userInfo", JSON.stringify(newUser));
     setToken(newToken);
     setUser(newUser);
@@ -55,9 +68,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const signOut = async () => {
     await SecureStore.deleteItemAsync("userToken");
     await SecureStore.deleteItemAsync("userInfo");
+    queryClient.clear();
     setToken(null);
     setUser(null);
   };
+
+  // Assign the internal signOut to the global reference
+  useEffect(() => {
+    globalSignOut = signOut;
+  }, []);
 
   return (
     <AuthContext.Provider value={{ signIn, signOut, user, token, isLoading }}>

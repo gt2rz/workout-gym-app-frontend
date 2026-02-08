@@ -1,25 +1,39 @@
+import Constants from "expo-constants";
 import { Platform } from "react-native";
 
 /**
  * Obtiene la URL de la API desde las variables de entorno.
- * Realiza una adaptación inteligente para el Emulador de Android si la URL es localhost.
+ * Realiza una adaptación inteligente para dispositivos físicos y emuladores.
  */
 const getApiUrl = () => {
-    // 1. Leer la variable de entorno (definida en .env, .env.local, .env.production)
-    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+    let apiUrl = process.env.EXPO_PUBLIC_API_URL;
 
     if (!apiUrl) {
         console.warn("⚠️ EXPO_PUBLIC_API_URL no está definida. Usando localhost por defecto.");
-        return "http://localhost:80";
+        apiUrl = "http://localhost:80";
     }
 
-    // 2. Adaptación para Android Emulator
-    if (Platform.OS === "android" && apiUrl.includes("localhost")) {
-        // Reemplazar 'localhost' con '10.0.2.2' para que el emulador vea el host
-        return apiUrl.replace("localhost", "10.0.2.2");
+    // Si estamos en desarrollo y el usuario puso localhost, intentamos encontrar la IP real del host
+    if (__DEV__ && apiUrl.includes("localhost")) {
+        // Extraemos la IP de donde Metro está sirviendo el bundle
+        const hostUri = Constants.expoConfig?.hostUri || Constants.manifest2?.extra?.expoGo?.debuggerHost || Constants.manifest?.hostUri;
+
+        if (hostUri) {
+            const ip = hostUri.split(":")[0];
+            const newUrl = apiUrl.replace("localhost", ip);
+            console.log(`[Env] Localhost detectado. Adaptando API URL a IP del host: ${newUrl}`);
+            return newUrl;
+        }
+
+        // Fallback específico para Android Emulator si no se pudo obtener la IP del host
+        if (Platform.OS === "android" && !Constants.isDevice) {
+            const androidUrl = apiUrl.replace("localhost", "10.0.2.2");
+            console.log(`[Env] Android Emulator sin IP de host. Usando: ${androidUrl}`);
+            return androidUrl;
+        }
     }
 
-    // 3. iOS y Producción usan la URL tal cual viene
+    console.log(`[Env] API URL Final: ${apiUrl}`);
     return apiUrl;
 };
 

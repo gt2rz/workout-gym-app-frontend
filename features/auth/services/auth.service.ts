@@ -16,11 +16,11 @@ export const login = async (payload: LoginPayload): Promise<LoginResponse> => {
 };
 
 export const forgotPassword = async (payload: ForgotPasswordPayload) => {
-    const { data } = await client.post("/api/v1/auth/forgot-password", payload);
+    const { data } = await client.post("/api/v1/auth/password/forgot", payload);
     return data;
 };
 
 export const resetPassword = async (payload: ResetPasswordPayload) => {
-    const { data } = await client.post("/api/v1/auth/reset-password", payload);
+    const { data } = await client.post("/api/v1/auth/password/reset", payload);
     return data;
 };

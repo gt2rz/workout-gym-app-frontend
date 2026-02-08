@@ -1,4 +1,5 @@
 import { API_KEY, API_URL } from "@/constants/env";
+import { logout } from "@/context/auth";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 
@@ -32,14 +33,8 @@ client.interceptors.response.use(
     async (error) => {
         if (error.response?.status === 401) {
             // Si el error es 401, el token ya no es válido. 
-            // Lo eliminamos para que el usuario sea redirigido al login al recargar 
-            // o en la siguiente verificación de estado.
-            try {
-                await SecureStore.deleteItemAsync("userToken");
-                await SecureStore.deleteItemAsync("userInfo");
-            } catch (e) {
-                console.error("Error al limpiar el almacenamiento en 401", e);
-            }
+            // Llamamos a logout para limpiar el estado y el storage.
+            await logout();
         }
 
         if (__DEV__) {
