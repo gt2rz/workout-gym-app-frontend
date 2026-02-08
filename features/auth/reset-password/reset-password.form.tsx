@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import {
     StyleSheet,
     Text,
@@ -9,14 +10,10 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import { Controller } from "react-rule-form"; // Wait, it should be react-hook-form
 
 import { useResetPassword } from "@/features/auth/hooks/useResetPassword";
 import { useTheme } from "@/theme";
 import { ResetPasswordFormData, resetPasswordSchema } from "../forgot-password/schemas";
-
-// Fix import
-import { useForm as useRHF } from "react-hook-form";
 
 export default function ResetPasswordForm() {
     const { colors } = useTheme();
@@ -27,7 +24,7 @@ export default function ResetPasswordForm() {
         control,
         handleSubmit,
         formState: { errors },
-    } = useRHF<ResetPasswordFormData>({
+    } = useForm<ResetPasswordFormData>({
         resolver: zodResolver(resetPasswordSchema),
         defaultValues: {
             email: email || "",
