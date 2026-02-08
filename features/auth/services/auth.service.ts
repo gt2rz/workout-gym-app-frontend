@@ -1,28 +1,10 @@
 import client from "@/core/api/client";
-
-export interface LoginPayload {
-    email: string;
-    password?: string;
-    device?: string;
-    [key: string]: any;
-}
-
-export interface User {
-    id: number;
-    name: string;
-    email: string;
-    initials: string;
-    registered_at: string;
-}
-
-export interface LoginResponse {
-    data: User;
-    status: string;
-    meta: {
-        access_token: string;
-        token_type: string;
-    };
-}
+import {
+    ForgotPasswordPayload,
+    LoginPayload,
+    LoginResponse,
+    ResetPasswordPayload,
+} from "./auth.types";
 
 /**
  * Servicios de API específicos para la funcionalidad de Autenticación.
@@ -33,4 +15,12 @@ export const login = async (payload: LoginPayload): Promise<LoginResponse> => {
     return data;
 };
 
-// Aquí podrías agregar register, forgotPassword, etc.
+export const forgotPassword = async (payload: ForgotPasswordPayload) => {
+    const { data } = await client.post("/api/v1/auth/forgot-password", payload);
+    return data;
+};
+
+export const resetPassword = async (payload: ResetPasswordPayload) => {
+    const { data } = await client.post("/api/v1/auth/reset-password", payload);
+    return data;
+};

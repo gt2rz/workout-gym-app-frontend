@@ -51,10 +51,7 @@ export default function LoginForm() {
   };
 
   const handleForgotPassword = () => {
-    Alert.alert(
-      "Recuperar Contraseña",
-      "Funcionalidad próximamente disponible"
-    );
+    router.push("/(auth)/forgot-password");
   };
 
   const handleSocialLogin = (provider: string) => {

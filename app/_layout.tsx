@@ -77,12 +77,14 @@ function RootLayoutNav() {
     if (isLoading) return;
 
     const inAuthGroup = segments[0] === "(auth)";
+    const isResetPassword = segments[1] === "reset-password";
+    const isForgotPassword = segments[1] === "forgot-password";
 
     if (!token && !inAuthGroup) {
       // Si no hay token y no está en login, redirigir a login
       router.replace("/login");
-    } else if (token && inAuthGroup) {
-      // Si hay token y está en login, ir a la app principal
+    } else if (token && inAuthGroup && !isResetPassword && !isForgotPassword) {
+      // Si hay token y está en login, ir a la app principal (a menos que esté reseteando pass)
       router.replace("/");
     }
   }, [token, isLoading, segments]);
@@ -93,6 +95,8 @@ function RootLayoutNav() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)/login" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)/register" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)/forgot-password" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)/reset-password" options={{ headerShown: false }} />
         <Stack.Screen name="profile" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>

@@ -1,12 +1,7 @@
 import * as SecureStore from "expo-secure-store";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-interface User {
-  id: string | number;
-  email: string;
-  name?: string;
-  [key: string]: any;
-}
+import { User } from "@/features/auth/services/auth.types";
 
 interface AuthContextType {
   user: User | null;

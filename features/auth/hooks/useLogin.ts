@@ -4,7 +4,8 @@ import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useRouter } from "expo-router";
 import { Alert } from "react-native";
-import { login, LoginPayload, LoginResponse } from "../services/auth.service";
+import { login } from "../services/auth.service";
+import { LoginPayload, LoginResponse } from "../services/auth.types";
 
 export const useLogin = () => {
     const { signIn } = useAuth();
