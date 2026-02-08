@@ -29,7 +29,19 @@ client.interceptors.request.use(async (config) => {
 
 client.interceptors.response.use(
     (response) => response,
-    (error) => {
+    async (error) => {
+        if (error.response?.status === 401) {
+            // Si el error es 401, el token ya no es válido. 
+            // Lo eliminamos para que el usuario sea redirigido al login al recargar 
+            // o en la siguiente verificación de estado.
+            try {
+                await SecureStore.deleteItemAsync("userToken");
+                await SecureStore.deleteItemAsync("userInfo");
+            } catch (e) {
+                console.error("Error al limpiar el almacenamiento en 401", e);
+            }
+        }
+
         if (__DEV__) {
             const url = error.config ? `${error.config.baseURL}${error.config.url}` : "Unknown URL";
             console.error(`[API Error] ${error.message} at ${url}`);
