@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "workout-gym-app-frontend",
-    "slug": "workout-gym-app-frontend",
+    "slug": "workout-app",
     "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
