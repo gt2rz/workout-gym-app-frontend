@@ -1,5 +1,4 @@
 import { useTheme } from "@/theme";
-import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { RefreshControl, ScrollView, StyleSheet, View, ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -29,12 +28,7 @@ export const ScreenWrapper = ({
     const Content = withScroll ? ScrollView : View;
 
     return (
-        <View style={[styles.container, { backgroundColor: colors.background.dark }]}>
-            <LinearGradient
-                colors={[colors.background.light, "transparent"]}
-                style={styles.backgroundGradient}
-            />
-
+        <View style={[styles.container, { backgroundColor: colors.background.primary }]}>
             <Content
                 style={[styles.content, { paddingTop: insets.top }, style]}
                 showsVerticalScrollIndicator={false}
@@ -61,12 +55,5 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-    },
-    backgroundGradient: {
-        position: "absolute",
-        left: 0,
-        right: 0,
-        top: 0,
-        height: 300,
     },
 });

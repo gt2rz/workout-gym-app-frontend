@@ -1,8 +1,7 @@
-import { Text, View } from "@/components/Themed";
 import { useTheme } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useHome } from "../hooks/useHome";
 
 const getIconName = (apiName: string): any => {
@@ -41,31 +40,31 @@ const StatsGridSection = () => {
         ]}
       >
         {/* Weight Card */}
-        <View style={[styles.statCard, { backgroundColor: "#193326" }]}>
+        <View style={[styles.statCard, { backgroundColor: colors.surface.primary, borderColor: colors.border.light }]}>
           <View style={styles.statCardHeader}>
-            <View style={[styles.statIcon, { backgroundColor: "#3d5a4b" }]}>
-              <Ionicons name={getIconName(weight.icono_name)} size={18} color="#13ec80" />
+            <View style={[styles.statIcon, { backgroundColor: colors.background.light }]}>
+              <Ionicons name={getIconName(weight.icono_name)} size={18} color={colors.primary.main} />
             </View>
             {weight.trend.percentage && (
               <View style={styles.statChange}>
                 <Ionicons
                   name={weight.trend.direction === "down" ? "trending-down" : "trending-up"}
                   size={14}
-                  color="#13ec80"
+                  color={colors.primary.main}
                 />
-                <Text style={[styles.statChangeText, { color: "#13ec80" }]}>
+                <Text style={[styles.statChangeText, { color: colors.primary.main }]}>
                   {weight.trend.percentage}
                 </Text>
               </View>
             )}
           </View>
           <View style={styles.statInfo}>
-            <Text style={[styles.statLabel, { color: "#92c9ad" }]}>
+            <Text style={[styles.statLabel, { color: colors.text.secondary }]}>
               {weight.label}
             </Text>
-            <Text style={[styles.statValue, { color: colors.text.light }]}>
+            <Text style={[styles.statValue, { color: colors.text.primary }]}>
               {weight.value}{" "}
-              <Text style={[styles.statUnit, { color: "#92c9ad" }]}>{weight.unit}</Text>
+              <Text style={[styles.statUnit, { color: colors.text.secondary }]}>{weight.unit}</Text>
             </Text>
           </View>
           <View style={styles.miniGraph}>
@@ -81,8 +80,8 @@ const StatsGridSection = () => {
                       height: `${height}%`,
                       backgroundColor:
                         index === weight.last_measures.length - 1
-                          ? "#13ec80"
-                          : "rgba(19, 236, 128, 0.2)",
+                          ? colors.primary.main
+                          : colors.primary.muted,
                     },
                   ]}
                 />
@@ -92,22 +91,22 @@ const StatsGridSection = () => {
         </View>
 
         {/* Streak Card */}
-        <View style={[styles.statCard, { backgroundColor: "#193326" }]}>
+        <View style={[styles.statCard, { backgroundColor: colors.surface.primary, borderColor: colors.border.light }]}>
           <View style={styles.statCardHeader}>
-            <View style={[styles.statIcon, { backgroundColor: "#3d5a4b" }]}>
-              <Ionicons name={getIconName(streak.icono_name)} size={18} color="#ff9500" />
+            <View style={[styles.statIcon, { backgroundColor: colors.background.light }]}>
+              <Ionicons name={getIconName(streak.icono_name)} size={18} color="#f59e0b" />
             </View>
           </View>
           <View style={styles.statInfo}>
-            <Text style={[styles.statLabel, { color: "#92c9ad" }]}>
+            <Text style={[styles.statLabel, { color: colors.text.secondary }]}>
               {streak.label}
             </Text>
-            <Text style={[styles.statValue, { color: colors.text.light }]}>
+            <Text style={[styles.statValue, { color: colors.text.primary }]}>
               {streak.value}{" "}
-              <Text style={[styles.statUnit, { color: "#92c9ad" }]}>{streak.unit}</Text>
+              <Text style={[styles.statUnit, { color: colors.text.secondary }]}>{streak.unit}</Text>
             </Text>
           </View>
-          <Text style={[styles.streakMessage, { color: "#92c9ad" }]}>
+          <Text style={[styles.streakMessage, { color: colors.text.secondary }]}>
             {streak.trend.message || "¡Vas genial!"}
           </Text>
         </View>
@@ -140,6 +139,12 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
     minHeight: 140,
+    borderWidth: 1,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   statCardHeader: {
     flexDirection: "row",

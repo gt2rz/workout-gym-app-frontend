@@ -33,14 +33,14 @@ const HeaderHomeSection = () => {
             source={{
               uri: "https://lh3.googleusercontent.com/aida-public/AB6AXuCrGjpDrUxo084O9lpHVmi0rP5fifEE4gCANQQ-kzoFW6Q809Yy9uXcLu3oAvKUkHY-KeuO0KXZKd56I6U2XgucShMQRrS4TzXX2GGcxvwvw1dNyYFYVqwdp9wg_EXf5N-F1p7DP4L5fr-HLNooQvVFYCtf98qBkrePHwUn20WPPJ014Klq-JeBLzorgeJQoX28PFYghupIwjnrDrPaMsRU4gcENRBMfrnjVfk9yRjr3eaHe-zja8F_9eRFqTZuKcbFNyG4n2l-rNE",
             }}
-            style={styles.avatar}
+            style={[styles.avatar, { borderColor: colors.primary.main }]}
           />
         </TouchableOpacity>
       </View>
       <TouchableOpacity
-        style={[styles.notificationButton, { backgroundColor: "#193326" }]}
+        style={[styles.notificationButton, { backgroundColor: colors.background.secondary }]}
       >
-        <Ionicons name="notifications-outline" size={24} color="#ffffff" />
+        <Ionicons name="notifications-outline" size={24} color={colors.text.primary} />
       </TouchableOpacity>
     </View>
   );
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     borderWidth: 2,
-    borderColor: "rgba(19, 236, 128, 0.2)",
   },
   notificationButton: {
     width: 40,

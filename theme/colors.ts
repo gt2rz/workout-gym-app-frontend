@@ -1,85 +1,85 @@
 export const Colors = {
-  // Colores principales
+  // Colores principales (Sky Blue on Slate)
   primary: {
-    main: '#14ec81',
-    light: '#09f27eff',
-    dark: '#36a16bff',
+    main: '#38bdf8', // slate-400 equivalent for primary
+    light: '#7dd3fc',
+    dark: '#0ea5e9',
     contrast: '#ffffff',
-    muted: '#80b298',
-  },
-  
-  // Colores secundarios (verde para registro/success)
-  secondary: {
-    main: '#10B981',
-    light: '#13ec80',
-    dark: '#0fb360',
-    contrast: '#ffffff',
-  },
-  
-  // Colores de acento (amarillo/dorado)
-  accent: {
-    main: '#14ec81',
-    light: '#09f27eff',
-    dark: '#36a16bff',
-    contrast: '#ffffff',
-  },
-  
-  // Colores de fondo
-  background: {
-    primary: '#102318',
-    secondary: '#0f3422',
-    dark: '#08140dff',
-    overlay: 'rgba(17, 34, 26, 0.7)',
-    transparent: 'transparent',
-    light: '#246946ff',
+    muted: '#38bdf844',
   },
 
-  // Superficies (para tarjetas y elementos elevados)
+  // Colores secundarios (Slate tones)
+  secondary: {
+    main: '#64748b', // slate-500
+    light: '#94a3b8', // slate-400
+    dark: '#475569', // slate-600
+    contrast: '#ffffff',
+  },
+
+  // Colores de acento
+  accent: {
+    main: '#38bdf8',
+    light: '#7dd3fc',
+    dark: '#0ea5e9',
+    contrast: '#ffffff',
+  },
+
+  // Colores de fondo (Tailwind Slate hierarchy)
+  background: {
+    primary: '#0f172a', // slate-900
+    secondary: '#1e293b', // slate-800
+    dark: '#020617', // slate-950
+    overlay: 'rgba(2, 6, 23, 0.85)',
+    transparent: 'transparent',
+    light: '#334155', // slate-700
+  },
+
+  // Superficies (Tarjetas y elementos elevados)
   surface: {
-    primary: '#224634ff',
-    secondary: '#103624',
-    dark: '#1c2f25ff',
+    primary: '#1e293b', // slate-800
+    secondary: '#334155', // slate-700
+    dark: '#0f172a', // slate-900
   },
 
   inputs: {
-    background: '#193326',
-    border: '#287752ff',
-    placeholder: '#517865',
-    text: '#ffffff',
+    background: '#1e293b',
+    border: '#334155',
+    placeholder: '#64748b',
+    text: '#f1f5f9',
   },
-  
+
   // Colores de texto
   text: {
-    primary: '#ddf9e4ff',
-    secondary: '#80b298',
+    primary: '#f1f5f9', // slate-100
+    secondary: '#94a3b8', // slate-400
     light: '#ffffff',
-    muted: '#9eaf9cff',
-    accent: '#13ea80',
-    link: '#14ec81',
-    dark: '#0b1f14ff',
+    muted: '#64748b', // slate-500
+    accent: '#38bdf8',
+    link: '#7dd3fc',
+    dark: '#020617',
   },
-  
-  // Estados (success, warning, error)
+
+  // Estados
   status: {
-    success: '#13ec80',
+    success: '#10b981',
     warning: '#f59e0b',
     error: '#ef4444',
-    info: '#3b82f6',
+    info: '#38bdf8',
   },
-  
+
   // Bordes y divisores
   border: {
-    light: '#21432e',
-    medium: '#163b27',
-    dark: '#0b1f14',
+    light: '#1e293b',
+    medium: '#334155',
+    dark: '#0f172a',
   },
-  
+
   // Sombras
   shadow: {
     color: '#000000',
-    light: 'rgba(0, 0, 0, 0.1)',
-    medium: 'rgba(0, 0, 0, 0.25)',
-    dark: 'rgba(0, 0, 0, 0.5)',
+    light: 'rgba(0, 0, 0, 0.4)',
+    medium: 'rgba(0, 0, 0, 0.6)',
+    dark: 'rgba(0, 0, 0, 0.8)',
   },
 };
 

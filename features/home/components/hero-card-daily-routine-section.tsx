@@ -1,9 +1,8 @@
-import { Text, View } from "@/components/Themed";
 import { useTheme } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useHome } from "../hooks/useHome";
 
 const HeroCardDailyRoutineSection = () => {
@@ -24,10 +23,10 @@ const HeroCardDailyRoutineSection = () => {
         ]}
       >
         <TouchableOpacity
-          style={[styles.heroCard, { backgroundColor: "transparent" }]}
+          style={[styles.heroCard, { backgroundColor: "transparent", borderColor: colors.border.light }]}
         >
           <LinearGradient
-            colors={["#1acf9c8c", "#133e259c", "#083d1ef7"]}
+            colors={["rgba(56, 189, 248, 0.4)", "rgba(15, 23, 42, 0.7)", "#0f172a"]}
             locations={[0, 0.4, 1]}
             style={styles.backgroundGradient}
           />
@@ -37,21 +36,21 @@ const HeroCardDailyRoutineSection = () => {
             resizeMode="cover"
           />
           <View style={styles.heroCardContent}>
-            <View style={styles.routineTypeTag}>
+            <View style={[styles.routineTypeTag, { backgroundColor: "rgba(56, 189, 248, 0.2)" }]}>
               <Ionicons
                 name="cafe-outline"
                 size={14}
-                color="#13ec80"
+                color={colors.primary.main}
                 style={{ marginRight: 4 }}
               />
-              <Text style={[styles.routineTypeText, { color: "#13ec80" }]}>
+              <Text style={[styles.routineTypeText, { color: colors.primary.main }]}>
                 Día de Descanso
               </Text>
             </View>
-            <Text style={[styles.heroTitle, { color: colors.text.light }]}>
+            <Text style={[styles.heroTitle, { color: colors.text.primary }]}>
               {no_workout.title}
             </Text>
-            <Text style={[styles.heroSubtitle, { color: "#92c9ad" }]}>
+            <Text style={[styles.heroSubtitle, { color: colors.text.secondary }]}>
               {no_workout.subtitle}
             </Text>
           </View>
@@ -68,10 +67,10 @@ const HeroCardDailyRoutineSection = () => {
       ]}
     >
       <TouchableOpacity
-        style={[styles.heroCard, { backgroundColor: "transparent" }]}
+        style={[styles.heroCard, { backgroundColor: "transparent", borderColor: colors.border.light }]}
       >
         <LinearGradient
-          colors={["#1acf9c8c", "#133e259c", "#083d1ef7"]}
+          colors={["rgba(56, 189, 248, 0.4)", "rgba(15, 23, 42, 0.7)", "#0f172a"]}
           locations={[0, 0.4, 1]}
           style={styles.backgroundGradient}
         />
@@ -81,21 +80,21 @@ const HeroCardDailyRoutineSection = () => {
           resizeMode="cover"
         />
         <View style={styles.heroCardContent}>
-          <View style={styles.routineTypeTag}>
+          <View style={[styles.routineTypeTag, { backgroundColor: "rgba(56, 189, 248, 0.2)" }]}>
             <Ionicons
               name="barbell-outline"
               size={14}
-              color="#13ec80"
+              color={colors.primary.main}
               style={{ marginRight: 4 }}
             />
-            <Text style={[styles.routineTypeText, { color: "#13ec80" }]}>
+            <Text style={[styles.routineTypeText, { color: colors.primary.main }]}>
               {workout.type}
             </Text>
           </View>
-          <Text style={[styles.heroTitle, { color: colors.text.light }]}>
+          <Text style={[styles.heroTitle, { color: colors.text.primary }]}>
             {workout.title}
           </Text>
-          <Text style={[styles.heroSubtitle, { color: "#92c9ad" }]}>
+          <Text style={[styles.heroSubtitle, { color: colors.text.secondary }]}>
             {workout.subtitle}
           </Text>
           <View
@@ -106,28 +105,34 @@ const HeroCardDailyRoutineSection = () => {
           >
             <View style={[styles.routineDetails]}>
               <View style={styles.routineDetailItem}>
-                <Ionicons name="time-outline" size={16} color="#92c9ad" />
-                <Text style={[styles.routineDetailText, { color: "#92c9ad" }]}>
+                <Ionicons name="time-outline" size={16} color={colors.text.secondary} />
+                <Text style={[styles.routineDetailText, { color: colors.text.secondary }]}>
                   {workout.duration_minutes}
                 </Text>
               </View>
               <View style={styles.routineDetailItem}>
-                <Ionicons name="list-outline" size={16} color="#92c9ad" />
-                <Text style={[styles.routineDetailText, { color: "#92c9ad" }]}>
+                <Ionicons name="list-outline" size={16} color={colors.text.secondary} />
+                <Text style={[styles.routineDetailText, { color: colors.text.secondary }]}>
                   {workout.exercises_count}
                 </Text>
               </View>
             </View>
             <TouchableOpacity
-              style={[styles.startButton, { backgroundColor: "#13ec80" }]}
+              style={[
+                styles.startButton,
+                {
+                  backgroundColor: colors.primary.main,
+                  shadowColor: colors.primary.main,
+                },
+              ]}
             >
-              <Text style={[styles.startButtonText, { color: "#11221a" }]}>
+              <Text style={[styles.startButtonText, { color: "#0f172a" }]}>
                 Comenzar
               </Text>
               <Ionicons
                 name="play"
                 size={18}
-                color="#11221a"
+                color="#0f172a"
                 style={{ marginLeft: 4 }}
               />
             </TouchableOpacity>
@@ -158,6 +163,12 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     position: "relative",
     minHeight: 200,
+    borderWidth: 1,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   heroCardImage: {
     position: "absolute",
@@ -183,7 +194,6 @@ const styles = StyleSheet.create({
   routineTypeTag: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "rgba(19, 236, 128, 0.2)",
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 20,
@@ -228,7 +238,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 10,
     borderRadius: 12,
-    shadowColor: "#13ec80",
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.3,
     shadowRadius: 15,

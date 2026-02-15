@@ -1,8 +1,7 @@
-import { Text, View } from "@/components/Themed";
 import { useTheme } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useHome } from "../hooks/useHome";
 
 const getIconName = (apiName: string): any => {
@@ -40,7 +39,7 @@ const QuickActionsSection = () => {
         {options.map((option) => (
           <TouchableOpacity
             key={option.id}
-            style={[styles.quickActionButton, { backgroundColor: "#193326" }]}
+            style={[styles.quickActionButton, { backgroundColor: colors.background.secondary }]}
           >
             <View
               style={[

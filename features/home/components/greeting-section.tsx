@@ -1,7 +1,6 @@
-import { View } from "@/components/Themed";
 import { useTheme } from "@/theme";
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useHome } from "../hooks/useHome";
 
 const GreetingSection = () => {
@@ -15,7 +14,7 @@ const GreetingSection = () => {
     const parts = message.split("{{user_name}}");
 
     return (
-      <Text style={[styles.greetingText, { color: colors.text.light }]}>
+      <Text style={[styles.greetingText, { color: colors.text.primary }]}>
         {parts[0]}
         {parts.length > 1 && (
           <Text style={styles.greetingBoldText}>{user_name}</Text>
@@ -32,7 +31,7 @@ const GreetingSection = () => {
         { backgroundColor: colors.background.transparent },
       ]}
     >
-      <Text style={[styles.dateText, { color: "#92c9ad" }]}>
+      <Text style={[styles.dateText, { color: colors.text.secondary }]}>
         {homeData.greeting.today.toUpperCase()}
       </Text>
       {renderGreetingMessage()}
